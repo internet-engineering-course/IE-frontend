@@ -1,0 +1,50 @@
+* {
+    font-family:  'IRANSans';
+}
+
+html{
+    direction: rtl;
+}
+.main-column{
+    padding-left: 10%;
+    padding-right: 10%; 
+}
+/* =========================== */
+header{
+    height: 60px;
+
+}
+
+.main-navigation {
+    display: inline;
+    float: left;
+    vertical-align: middle;
+    list-style:none; 
+}
+.main-navigation li {
+    display: inline-block;
+
+    color: black;
+}
+
+.logo{
+    width: auto;
+    height: 90%;
+    float: right;
+}
+
+/* ========================== */
+footer {
+    background-color: #363636;
+    color: #878787;
+    text-align:center;
+    padding:20px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 65px;
+    width: 100%;
+}
+
+
+
