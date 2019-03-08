@@ -1,0 +1,31 @@
+.profile-border{
+    height: 290px;
+    width: 290px;
+    margin-top: -135px;
+    border-radius: 20px;
+    border:white;
+    border-style:solid;
+    border-width: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.profile-image{
+    height: 270px;
+    width: 270px;
+    margin-top: -10px;
+    margin-right: -10px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.background-blue{
+    background-color: #B9EFF2;
+    height: 225px;
+}
