@@ -9,6 +9,7 @@ html{
 main{
     height: calc(100vh - 60px - 65px);
     background-color: #f6f6f6;
+    text-align: right;
 }
 
 header{

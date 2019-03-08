@@ -1,0 +1,41 @@
+.background-blue{
+    background-color: #B9EFF2;
+    height: 150px;
+}
+
+.background{
+    background-color: white;
+    margin-top: -80px;
+    box-shadow: 0 1px 4px rgba(0,0,0, 0.1)
+}
+
+.project-image{
+    margin: 20px 20px;
+    height: auto;
+    width: 80%;
+}
+
+.gray-color{
+    color: #767676;
+
+}
+
+.blue-color{
+    color: #118991;
+}
+
+.dashed-line{
+    border:none;
+    border-top:2px dashed #00D3DE;
+    color:#fff;
+    background-color:#fff;
+    height:1px;
+    margin-left: 15px;
+    margin-right: 15px;
+    width:100%;
+      
+}
+
+.project-skill{
+    background-color: #F9F9F9;
+}
