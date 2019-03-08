@@ -1,78 +1,78 @@
-*{
-    font-family: IRANSans;
+* {
+	font-family: IRANSans;
 }
 
-html{
-    direction: rtl;
+html {
+	direction: rtl;
 }
 
-main{
-    height: calc(100vh - 60px - 65px);
-    background-color: #f6f6f6;
+main {
+	height: calc(100vh - 60px - 65px);
+	background-color: #f6f6f6;
+	text-align: right;
 }
 
-header{
-    height: 60px;
+header {
+	height: 60px;
 }
 
-p h2{
-    text-align: right;
+p h2 {
+	text-align: right;
 }
 
-.text-gray{
-    color: #787878;
+.text-gray {
+	color: #787878;
 }
 
-#logo img{
-    width:140px;
-    height:60px;
+#logo img {
+	width: 140px;
+	height: 60px;
 }
 
-.skill-box{
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
+.skill-box {
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+	margin: 5px 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
 }
 
-.green-point-box{
-    background-color: #04B800;
-    border-radius: 5px;
-    margin: 10px;
-    height: 30px;
+.point-box {
+	border-radius: 4px;
+	display: block;
+	margin: 5px;
+	text-align: center;
+	width: 24px;
+	height: 24px;
+	line-height: 26px;
 }
 
-.blue-point-box{
-    background-color: #B9EFF2;
-    border-radius: 5px;
-    margin: 10px;
-    height: 30px;
+.point-green {
+	background-color: #04B800;
+	color: white;
 }
 
-.make-ltr{
-    direction: ltr;
+.point-blue {
+	background-color: #B9EFF2;
+	color: #156D6F;
 }
 
-.skill-point-style-white{
-    text-align: center;
-    color: white;
-    font-size: x-large;
+.skill-text {
+	margin: 10px;
 }
 
-.skill-point-style-black{
-    text-align: center;
-    color:#156D6F;
-    font-size: x-large;
+.make-ltr {
+	direction: ltr;
 }
 
-footer{
-    background-color:#363636;
-    height: 65px;
+footer {
+	background-color: #363636;
+	height: 65px;
 }
 
-.footer-text{
-    color: #878787;
+.footer-text {
+	color: #878787;
 }
