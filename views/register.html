@@ -26,16 +26,52 @@
 	<main>
 		<div class="container h-100">
 			<div class="row justify-content-center align-items-center h-100">
-				<div class="col-md-8">
+				<div class="col-md-9">
 					<form>
 						<h1>ثبت نام</h1>
 						<hr>
-						<label for="email"><b>ایمیل</b></label>
-						<input type="email" class="text-box" placeholder="ایمیل وارد کنید" name="email" required>
-						<label for="pwd"><b>رمز عبور</b></label>
-						<input type="password" class="text-box" placeholder="رمز وارد کنید" name="pwd" required>
-						<label for="pwd-repeat"><b>تکرار رمز عبور</b></label>
-						<input type="password" class="text-box" placeholder="تکرار رمز وارد کنید" name="pwd-repeat" required>
+						<div class="row">
+							<div class="col-md-6">
+								<label for="firstname"><b>نام</b></label>
+								<input type="text" class="text-box" placeholder="نام خود را وارد کنید" name="firstname" required>
+							</div>
+							<div class="col-md-6">
+								<label for="lastname"><b>نام خانوادگی</b></label>
+								<input type="text" class="text-box" placeholder="نام خانوادگی وارد کنید" name="lastname" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<label for="username"><b>نام کاربری</b></label>
+								<input type="text" class="text-box right-placeholder" placeholder="نام کاربری وارد کنید" name="username" required>
+							</div>
+							<div class="col-md-6">
+								<label for="bio"><b>بیو</b></label>
+								<input type="text" class="text-box" placeholder="توضیح کوتاه در مورد خودت" name="bio" required>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<label for="jobTitle"><b>عنوان شغلی</b></label>
+								<input type="text" class="text-box" placeholder="عنوان شغل تا حد ممکن فارسی" name="jobTitle" required>
+							</div>
+							<div class="col-md-6">
+								<label for="profileImgUrl"><b>عکس پروفایل</b></label>
+								<input type="url" class="text-box right-placeholder" placeholder="لینک عکس پروفایل" name="profileImgUrl" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-6">
+								<label for="pwd"><b>رمز عبور</b></label>
+								<input type="password" class="text-box" placeholder="رمز وارد کنید" name="pwd" required>
+							</div>
+							<div class="col-md-6">
+								<label for="pwd-repeat"><b>تکرار رمز عبور</b></label>
+								<input type="password" class="text-box" placeholder="تکرار رمز وارد کنید" name="pwd-repeat" required>
+							</div>
+						</div>												
 						<div class="row justify-content-center">
 							<div class="col-sm-4">
 								<button type="submit" class="signupbtn">ثبت نام</button>
