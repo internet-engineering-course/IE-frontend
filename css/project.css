@@ -57,17 +57,20 @@
     margin-left: 15px;
     margin-right: 15px;
     width:100%;
-      
 }
 
 .project-skill{
     background-color: #F9F9F9;
-    height: 100px;
+    box-shadow: 0 1px 4px rgba(0,0,0, 0.1);
 }
 
 .bid-container{
     padding: 15px 15px;
     background-color: #FFFFFF;
+    height: 90px;
+    box-shadow: 0 1px 4px rgba(0,0,0, 0.1);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .green-color{
