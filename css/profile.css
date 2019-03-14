@@ -50,4 +50,7 @@
 	-webkit-transform: skew(-32deg, 0deg);
 	transform: skew(-32deg, 0deg);
 	margin-right: 15px;
+	-webkit-box-shadow: -19px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: -19px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: -10px 0px 0px 0px #7ADBE3;
 }
