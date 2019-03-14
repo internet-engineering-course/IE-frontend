@@ -1,19 +1,42 @@
 .background-blue{
     background-color: #B9EFF2;
-    height: 150px;
+    box-shadow: inset 0px 1px 10px 1px rgba(0,0,0, 0.1);
+    height: 100px;
 }
 
 .background{
     background-color: white;
-    margin-top: -80px;
-    box-shadow: 0 1px 4px rgba(0,0,0, 0.1)
+    margin-top: -50px;
+    box-shadow: 0 1px 4px rgba(0,0,0, 0.1);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.text-margin{
+    padding: 25px 10px;
+    margin-right: -20px;
 }
 
 .project-image{
-    margin: 20px 20px;
+    padding: 25px 25px;
     height: auto;
-    width: 80%;
+    max-width: 100%;
 }
+
+.unorder-list{
+    list-style: none;
+}
+ul li{
+    display: inline-flex;
+}
+.icon{
+    position: relative;
+
+}
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+ }
 
 .gray-color{
     color: #767676;
@@ -36,6 +59,27 @@
       
 }
 
+.gray-line{
+    border:none;
+    border-style: solid;
+    border-bottom: 0.1px #E6E6E6;
+    color:#E6E6E6;
+    background-color:#fff;
+    height:0.1px;
+    margin-left: 15px;
+    margin-right: 15px;
+    width:100%;
+}
+
 .project-skill{
     background-color: #F9F9F9;
+}
+
+.bid-container{
+    padding: 15px 15px;
+    background-color: #FFFFFF;
+}
+
+.green-color{
+    color: #008D3D;
 }
