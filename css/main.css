@@ -7,7 +7,7 @@ html {
 }
 
 main {
-	height: calc(100vh - 60px - 65px);
+	min-height: calc(100vh - 60px - 65px);
 	background-color: #f6f6f6;
 	text-align: right;
 	text-align: justify;
@@ -55,14 +55,38 @@ p h2 {
 	line-height: 26px;
 }
 
+.green-hover:hover{
+	font-size: 0px;
+	background-color: #04B800;
+	color: white;
+}
+
+.green-hover:hover:after{
+	font-size: 14px;
+	content: "+";
+}
+
+.red-hover:hover{
+	font-size: 0px;
+	background-color: #EF011C;
+	color: white;
+}
+
+.red-hover:hover:after{
+	font-size: 14px;
+	content: "-";
+}
+
 .point-green {
 	background-color: #04B800;
+	font-size: 14px;
 	color: white;
 }
 
 .point-blue {
 	background-color: #B9EFF2;
 	color: #156D6F;
+	font-size: 14px;
 }
 
 .skill-text {

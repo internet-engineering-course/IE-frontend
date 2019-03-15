@@ -4,7 +4,7 @@
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	 crossorigin="anonymous">
-	<link rel="stylesheet" href="../fonts/iransans-fonts/fonts.css">
+	<link rel="stylesheet" href="../resources/fonts/iransans-fonts/fonts.css">
 	<link rel="stylesheet" href="../css/main.css">
 	<link rel="stylesheet" href="../css/profile.css">
 	<meta charset="utf-8">
@@ -18,7 +18,7 @@
 		<div class="container">
 			<div class="row justify-content-between align-items-center">
 				<div id="logo" class="col-auto">
-					<img src="../img/logo v1.png" alt="jobonja logo">
+					<img src="../resources/img/logo v1.png" alt="jobonja logo">
 				</div>
 				<nav class="col-auto">
 					<div class="row align-items-center">
@@ -34,7 +34,7 @@
 			<div class="container h-100">
 				<div class="row h-100 align-items-end no-gutters">
 					<div class="col-auto">
-						<span class="profile-bar dark-bar"/>
+						<span class="profile-bar dark-bar"></span>
 					</div>
 				</div>
 			</div>
@@ -44,7 +44,7 @@
 				<div class="row align-items-center">
 					<div class="col-auto">
 						<div class="profile-border">
-							<img src="../img/profile.jpg" alt="profile photo" class="profile-image">
+							<img src="../resources/img/profile.jpg" alt="profile photo" class="profile-image">
 						</div>
 					</div>
 					<div class="col-auto">
@@ -66,7 +66,8 @@
 						حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
 					</span>
 				</div>
-				<div class="make-ltr">
+				<!-- part other-user-profile -->
+				<!-- <div class="make-ltr">
 					<div class="row justify-content-start no-gutters">
 						<div class="col-auto">
 							<div class="skill-box">
@@ -75,7 +76,7 @@
 										<span class="skill-text">HTML</span>
 									</div>
 									<div class="col-auto ">
-										<span class="point-green point-box">+</span>
+										<span class="point-blue green-hover point-box">5</span>
 									</div>
 								</div>
 							</div>
@@ -99,7 +100,7 @@
 										<span class="skill-text">JavaScript</span>
 									</div>
 									<div class="col-auto ">
-										<span class="point-blue point-box">3</span>
+										<span class="point-blue green-hover point-box">16</span>
 									</div>
 								</div>
 							</div>
@@ -111,7 +112,75 @@
 										<span class="skill-text">TypeScript</span>
 									</div>
 									<div class="col-auto ">
-										<span class="point-blue point-box">16</span>
+										<span class="point-blue green-hover point-box">2</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> -->
+				<!-- profile-page part-->
+				<div class="make-rtl mx-3 mb-3">
+					<div class="row">
+						<h4 class="px-3 py-2">مهارت‌ها:</h4>
+						<form>
+							<select title="skillName" name="skillName">
+								<option value="0">--انتخاب مهارت--</option>
+								<option value="1">Python</option>
+								<option value="2">C++</option>
+								<option value="3">Java</option>
+								<option value="4">SQL</option>
+							</select>
+							<input type="submit" class="form-input" value="افزودن مهارت">
+						</form>
+					</div>
+				</div>
+				<div class="make-ltr">
+					<div class="row justify-content-start no-gutters">
+						<div class="col-auto">
+							<div class="skill-box">
+								<div class="row no-gutters align-items-center">
+									<div class="col-auto">
+										<span class="skill-text">HTML</span>
+									</div>
+									<div class="col-auto ">
+										<span class="point-blue red-hover point-box">5</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-auto">
+							<div class="skill-box">
+								<div class="row no-gutters align-items-center">
+									<div class="col-auto">
+										<span class="skill-text">CSS</span>
+									</div>
+									<div class="col-auto ">
+										<span class="point-blue red-hover point-box">3</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-auto">
+							<div class="skill-box">
+								<div class="row no-gutters align-items-center">
+									<div class="col-auto">
+										<span class="skill-text">JavaScript</span>
+									</div>
+									<div class="col-auto ">
+										<span class="point-blue red-hover point-box">16</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-auto">
+							<div class="skill-box">
+								<div class="row no-gutters align-items-center">
+									<div class="col-auto">
+										<span class="skill-text">TypeScript</span>
+									</div>
+									<div class="col-auto ">
+										<span class="point-blue red-hover point-box">2</span>
 									</div>
 								</div>
 							</div>
