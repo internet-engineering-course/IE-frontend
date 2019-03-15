@@ -62,7 +62,7 @@ button:hover {
 .slider {
 	margin: 0px auto;
 	position: absolute;
-	min-height: calc(100% - 60px - 65px);
+	min-height: calc(100% - 60px);
 }
 
 .slide {
