@@ -14,7 +14,11 @@ main {
 }
 
 header {
-	height: 60px;
+    position: relative;
+    height: 60px;
+    background-color: white;
+    z-index: 1;
+    /* box-shadow: 0px 1px 4px  rgba(0,0,0,0.1); */
 }
 
 p h2 {

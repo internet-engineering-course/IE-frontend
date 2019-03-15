@@ -16,7 +16,7 @@
 
 <body>
     <header>
-        <div class="container">
+        <div class="container header-hover">
             <div class="row justify-content-between align-items-center">
                 <div id="logo" class="col-auto">
                     <img src="../img/logo v1.png" alt="jobonja logo">
@@ -38,43 +38,75 @@
             <div class="container">
                 <div class="background">
                     <div class="row">
-                        <div class="col-md-3 mt-2">
-                            <img src="../img/profile.jpg" alt="project image" class="project-image">
+                        <div class="col-md-3">
+                            <img src="../img/test.png" alt="project image" class="project-image">
                         </div>
-                        <div class="col-md-9">
-                            <div class="row">
-                                <span class="mt-4">
-                                    <h2>پروژه طراحی سایت جاب‌اونجا</h2>
-                                </span>
+                        <div class="col-md-9 text-margin">
+                            <div>
+                                <h2>پروژه طراحی سایت جاب‌اونجا</h2>
                             </div>
-                            <div class="row">
-                                <span class="gray-color">
-                                    <p>
-                                        <i class="flaticon-deadline"></i>
-                                        <b>
-                                            زمان باقی‌مانده:
-                                        </b>
-                                        ۱۷ دقیقه و ۲۵ ثانیه
-                                    </p>
-                                </span>
+                            <div class="my-3">
+                                <!-- for project-already-bid and project-bid part -->
+                                <div class="gray-color">
+                                    <ul class="unorder-list">
+                                        <li><i class="flaticon-deadline "></i></li>
+                                        <li>
+                                            <p>
+                                                <b>
+                                                    زمان باقی‌مانده:
+                                                </b>
+                                                ۱۷ دقیقه و ۲۵ ثانیه
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- for project-deadline-reached part -->
+                                <!-- <div class="red-color">
+                                    <ul class="unorder-list">
+                                        <li><i class="flaticon-deadline "></i></li>
+                                        <li>
+                                            <p>
+                                                <b>
+                                                    مهلت تمام شده
+                                                </b>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                                <div class="blue-color">
+                                    <ul class="unorder-list">
+                                        <li>
+                                            <i class="flaticon-money-bag"></i>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <b>
+                                                    بودجه: ۲۵۰۰ تومان
+                                                </b>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- for project-deadline-reached part -->
+                                <!-- <div class="green-color">
+                                    <ul class="unorder-list">
+                                        <li><i class="flaticon-check-mark"></i></li>
+                                        <li>
+                                            <p>
+                                                <b>
+                                                    برنده: وحید محمدی
+                                                </b>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div> -->
                             </div>
-                            <div class="row">
-                                <span>
-                                    <p class="blue-color">
-                                        <i class="flaticon-money-bag"></i>
-                                        <b>
-                                            بودجه: ۲۵۰۰ تومان
-                                        </b>
-
-                                    </p>
-                                </span>
+                            <div class="my-3">
+                                <h5>توضیحات</h5>
                             </div>
-                            <div class="row">
-                                <p><b>توضیحات</b></p>
-                            </div>
-                            <div class="row">
+                            <div>
                                 <p>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لورم ایپسوم متن ساختگی با تولید سادگی
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لورم ایپسوم متن ساختگی با تولید سادگی
                                     نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
                                     و مجله در ستون و سطرآنچنان که لازم است
                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
@@ -92,11 +124,114 @@
                 <div class="row">
                     <div class="dashed-line"></div>
                 </div>
-                <div class="project-skill">
-                    <div class="col-md-2 ">
-                        <div>
-                            <p><b>مهارت‌های لازم</b></p>
+                <div class="project-skill border-bottom py-3">
+                    <div class="mx-5">
+                        <div class="make-rtl">
+                            <div class="row">
+                                <div class="blue-color">
+                                    <p><b>مهارت‌های لازم:</b></p>
+                                </div>
+                            </div>
                         </div>
+                        <div class="make-ltr">
+                            <div class="row justify-content-start no-gutters">
+                                <div class="col-auto">
+                                    <div class="skill-box">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <span class="skill-text">HTML</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <span class="point-blue point-box">5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="skill-box">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <span class="skill-text">CSS</span>
+                                            </div>
+                                            <div class="col-auto ">
+                                                <span class="point-blue point-box">3</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="skill-box">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <span class="skill-text">JavaScript</span>
+                                            </div>
+                                            <div class="col-auto ">
+                                                <span class="point-blue point-box">16</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="skill-box">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <span class="skill-text">TypeScript</span>
+                                            </div>
+                                            <div class="col-auto ">
+                                                <span class="point-blue point-box">2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="bid-container py-4">
+                    <!-- for project-already-bid part -->
+                    <!-- <div class="green-color">
+                            <ul class="unorder-list mr-3">
+                                <li><i class="flaticon-check-mark"></i></li>
+                                <li>
+                                    <p>
+                            شما قبلا پیشنهاد خود را ثبت کرده‌اید.
+                                    </p>
+                                </li>
+                            </ul>
+                    </div> -->
+                    <!-- for project-deadline-reached part -->
+                    <!-- <div class="red-color">
+                        <ul class="unorder-list mr-3">
+                            <li><i class="flaticon-danger"></i></li>
+                            <li>
+                                <p>
+                                        مهلت ارسال پیشنهاد برای این پروژه به پایان رسیده است!
+                                </p>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <!-- for project-bid part -->
+                    <div class="row mx-3">
+                        <span class="mt-2">
+                            <h5>ثبت پیشنهاد</h5>
+                        </span>
+                    </div>
+                    <div class="row mx-3">
+                        <form class="form-inline">
+                            <div class="form-group ml-3 mb-2">
+                                <span class="input-border">
+                                    <input type="text" placeholder="پیشنهاد خود را وارد کنید">
+                                    <span class="input-color mr-4">
+                                        تومان
+                                    </span>
+                                </span>
+                            </div>
+                            <button type="submit" class="button mb-2">ارسال</button>
+                        </form>
                     </div>
                 </div>
             </div>
