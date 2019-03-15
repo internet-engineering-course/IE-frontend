@@ -46,6 +46,7 @@
                                 <h2>پروژه طراحی سایت جاب‌اونجا</h2>
                             </div>
                             <div class="my-3">
+                                <!-- for project-already-bid and project-bid part -->
                                 <div class="gray-color">
                                     <ul class="unorder-list">
                                         <li><i class="flaticon-deadline "></i></li>
@@ -59,6 +60,19 @@
                                         </li>
                                     </ul>
                                 </div>
+                                <!-- for project-deadline-reached part -->
+                                <!-- <div class="red-color">
+                                    <ul class="unorder-list">
+                                        <li><i class="flaticon-deadline "></i></li>
+                                        <li>
+                                            <p>
+                                                <b>
+                                                    مهلت تمام شده
+                                                </b>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div> -->
                                 <div class="blue-color">
                                     <ul class="unorder-list">
                                         <li>
@@ -73,6 +87,19 @@
                                         </li>
                                     </ul>
                                 </div>
+                                <!-- for project-deadline-reached part -->
+                                <!-- <div class="green-color">
+                                    <ul class="unorder-list">
+                                        <li><i class="flaticon-check-mark"></i></li>
+                                        <li>
+                                            <p>
+                                                <b>
+                                                    برنده: وحید محمدی
+                                                </b>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div> -->
                             </div>
                             <div class="my-3">
                                 <h5>توضیحات</h5>
@@ -97,7 +124,7 @@
                 <div class="row">
                     <div class="dashed-line"></div>
                 </div>
-                <div class="project-skill border-bottom py-4">
+                <div class="project-skill border-bottom py-3">
                     <div class="mx-5">
                         <div class="make-rtl">
                             <div class="row">
@@ -164,12 +191,47 @@
         </section>
         <section>
             <div class="container">
-                <div class="bid-container">
-                    <div class="green-color">
-                        <p class="mt-2 mx-3">
-                            <i class="flaticon-check-mark ml-2"></i>
+                <div class="bid-container py-4">
+                    <!-- for project-already-bid part -->
+                    <!-- <div class="green-color">
+                            <ul class="unorder-list mr-3">
+                                <li><i class="flaticon-check-mark"></i></li>
+                                <li>
+                                    <p>
                             شما قبلا پیشنهاد خود را ثبت کرده‌اید.
-                        </p>
+                                    </p>
+                                </li>
+                            </ul>
+                    </div> -->
+                    <!-- for project-deadline-reached part -->
+                    <!-- <div class="red-color">
+                        <ul class="unorder-list mr-3">
+                            <li><i class="flaticon-danger"></i></li>
+                            <li>
+                                <p>
+                                        مهلت ارسال پیشنهاد برای این پروژه به پایان رسیده است!
+                                </p>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <!-- for project-bid part -->
+                    <div class="row mx-3">
+                        <span class="mt-2">
+                            <h5>ثبت پیشنهاد</h5>
+                        </span>
+                    </div>
+                    <div class="row mx-3">
+                        <form class="form-inline">
+                            <div class="form-group ml-3 mb-2">
+                                <span class="input-border">
+                                    <input type="text" placeholder="پیشنهاد خود را وارد کنید">
+                                    <span class="input-color mr-4">
+                                        تومان
+                                    </span>
+                                </span>
+                            </div>
+                            <button type="submit" class="button mb-2">ارسال</button>
+                        </form>
                     </div>
                 </div>
             </div>
