@@ -4,7 +4,7 @@
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	 crossorigin="anonymous">
-	<link rel="stylesheet" href="../fonts/iransans-fonts/fonts.css">
+	<link rel="stylesheet" href="../resources/fonts/iransans-fonts/fonts.css">
 	<link rel="stylesheet" href="../css/main.css">
 	<link rel="stylesheet" href="../css/register.css">
 	<meta charset="utf-8">
@@ -15,25 +15,29 @@
 
 <body>
 	<header>
-		<div class="container">
-			<div class="row justify-content-between align-items-center">
-				<div id="logo" class="col-auto">
-					<img src="../img/logo v1.png" alt="jobonja logo">
+		<div class="header">
+			<div class="container">
+				<div class="row align-items-center">
+					<div id="logo" class="col-auto">
+						<img src="../resources/img/logo v1.png" alt="jobonja logo">
+					</div>
 				</div>
 			</div>
 		</div>
 	</header>
 	<main>
-	<div class='slider'>
-		<div class='slide slide1'></div>
-		<div class='slide slide2'></div>
-		<div class='slide slide3'></div>
-	</div>
-	<div class="container h-100">
-			<div class="row justify-content-center align-items-center h-100 main-height">
+		<div>
+			<div class='slider'>
+				<div class='slide slide1'></div>
+				<div class='slide slide2'></div>
+				<div class='slide slide3'></div>
+			</div>
+		</div>
+		<div class="container h-100">
+			<div class="row justify-content-center align-items-center main-height">
 				<div class="col-md-9">
-					<form class="register-form">
-						<h1>ثبت نام</h1>
+					<form class="register-form py-2 px-5">
+						<h1 class="center-text">ثبت نام</h1>
 						<hr>
 						<div class="row">
 							<div class="col-md-6">
@@ -48,7 +52,8 @@
 						<div class="row">
 							<div class="col-md-6">
 								<label for="username"><b>نام کاربری</b></label>
-								<input type="text" class="text-box right-placeholder" placeholder="نام کاربری وارد کنید" name="username" required>
+								<input type="text" class="text-box right-placeholder" placeholder="نام کاربری وارد کنید" name="username"
+								 required>
 							</div>
 							<div class="col-md-6">
 								<label for="bio"><b>بیو</b></label>
@@ -63,10 +68,11 @@
 							</div>
 							<div class="col-md-6">
 								<label for="profileImgUrl"><b>عکس پروفایل</b></label>
-								<input type="url" class="text-box right-placeholder" placeholder="لینک عکس پروفایل" name="profileImgUrl" required>
+								<input type="url" class="text-box right-placeholder" placeholder="لینک عکس پروفایل" name="profileImgUrl"
+								 required>
 							</div>
 						</div>
-						
+
 						<div class="row">
 							<div class="col-md-6">
 								<label for="pwd"><b>رمز عبور</b></label>
@@ -76,7 +82,7 @@
 								<label for="pwd-repeat"><b>تکرار رمز عبور</b></label>
 								<input type="password" class="text-box" placeholder="تکرار رمز وارد کنید" name="pwd-repeat" required>
 							</div>
-						</div>												
+						</div>
 						<div class="row justify-content-center">
 							<div class="col-sm-4">
 								<button type="submit" class="signupbtn">ثبت نام</button>
