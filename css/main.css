@@ -13,6 +13,10 @@ main {
 	text-align: justify;
 }
 
+.main-height {
+	min-height: calc(100vh - 60px - 65px);
+}
+
 header {
     position: relative;
     height: 60px;
