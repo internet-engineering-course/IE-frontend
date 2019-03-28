@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ErrorHandlerService } from 'src/core/error-handler-service';
 import User from 'src/views/user/user';
 import './home.scss';
+import Header from 'src/views/common/Header';
 
 export default class Home extends Component<Props, State> {
   getUsers() {
@@ -51,7 +52,7 @@ export default class Home extends Component<Props, State> {
 
     return (
       <div>
-        <section>
+        {/* <section>
           <p>Add skill section</p>
           <button onClick={this.addSkill}>add skill</button>
         </section>
@@ -64,7 +65,7 @@ export default class Home extends Component<Props, State> {
             <span id="span-test">test</span>
           </User>
         </section>
-        <section>{skillsComp}</section>
+        <section>{skillsComp}</section> */}
       </div>
     );
   }

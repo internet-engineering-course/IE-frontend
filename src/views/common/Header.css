@@ -1,0 +1,24 @@
+header {
+  height: 60px;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 10;
+}
+
+#logo img {
+  width: 140px;
+  height: 60px;
+}
+
+.profile-link {
+  color: black;
+}
+
+.profile-link:link {
+  text-decoration: none;
+}
+/*# sourceMappingURL=Header.css.map */
