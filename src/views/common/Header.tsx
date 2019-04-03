@@ -12,74 +12,50 @@ export default class Header extends Component<Props, State> {
     render() {
         const isUserLoggedIn: boolean = this.props.isUserLoggedIn;
         if (isUserLoggedIn) {
-            return (
-                <header>
-                    <div className="header">
-                        <div className="container header-hover">
-                            <div className="row justify-content-between align-items-center">
-                                <div id="logo" className="col-auto">
-                                    <img src={logoUrl} alt="jobonja-logo" />
-                                </div>
-                                <nav className="col-auto">
-                                    <div className="row align-items-center">
-                                        <a href="../views/profile.html" className="col-auto profile-link">حساب کاربری</a>
-                                        <div className="col-auto">خروج</div>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-            );
+            const result = this.userHeader();
+            return result;
         }
         else {
-            return (
-                <header>
-                    <div className="header">
-                        <div className="container header-hover">
-                            <div className="row justify-content-between align-items-center">
-                                <div id="logo" className="col-auto">
-                                    <img src={logoUrl} alt="jobonja-logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-            );
+            const result = this.guestHeader();
+            return result;
         }
     }
-    // TODO : edit render function that use relative function
-    guestHeader = (props: Props) => {
+
+    guestHeader = () => {
         return (
-            <div className="header">
-                <div className="container">
-                    <div className="row justify-content-between align-items-center">
-                        <div id="logo" className="col-auto">
-                            <img src={logoUrl} alt="jobonja-logo" />
+            <header>
+                <div className="header">
+                    <div className="container header-hover">
+                        <div className="row justify-content-between align-items-center">
+                            <div id="logo" className="col-auto">
+                                <img src={logoUrl} alt="jobonja-logo" />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </header>
         );
     }
 
-    userHeader = (props: Props) => {
+    userHeader = () => {
         return (
-            <div className="header">
-                <div className="container">
-                    <div className="row justify-content-between align-items-center">
-                        <div id="logo" className="col-auto">
-                            <img src={logoUrl} alt="jobonja-logo" />
-                        </div>
-                        <nav className="col-auto">
-                            <div className="row align-items-center">
-                                <a href="../views/profile.html" className="col-auto profile-link">حساب کاربری</a>
-                                <div className="col-auto">خروج</div>
+            <header>
+                <div className="header">
+                    <div className="container header-hover">
+                        <div className="row justify-content-between align-items-center">
+                            <div id="logo" className="col-auto">
+                                <img src={logoUrl} alt="jobonja-logo" />
                             </div>
-                        </nav>
+                            <nav className="col-auto">
+                                <div className="row align-items-center">
+                                    <a href="../views/profile.html" className="col-auto profile-link">حساب کاربری</a>
+                                    <div className="col-auto">خروج</div>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </header>
         );
     }
 }

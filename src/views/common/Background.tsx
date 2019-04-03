@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import 'src/views/common/Background.scss'
 import 'src/scss/style.scss'
-import { number } from 'prop-types';
 
 export default class Background extends Component<Props, State> {
 
@@ -11,7 +10,9 @@ export default class Background extends Component<Props, State> {
 
     render() {
         const blueBackgroundHeight: string = this.props.blueBackgroundHeight;
-        
+        console.log(blueBackgroundHeight);
+        document.documentElement.style.setProperty('--Height' , blueBackgroundHeight);
+
         return (
             <main>
                 <section className="background-blue" />
