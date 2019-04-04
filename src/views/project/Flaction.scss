@@ -1,0 +1,19 @@
+.unorder-list{
+    list-style: none;
+    margin: 0px;
+    display: inline-flex;
+    padding: 0px;
+}
+
+.unorder-list li{
+    margin: 4px;
+}
+
+.unorder-list li p{
+    margin-top: 3px;
+    margin-bottom: -20px;
+}
+
+.color{
+    color: var(--flacColor);
+}

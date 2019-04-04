@@ -13,4 +13,9 @@
   max-height: 12em;
   max-width: 12em;
 }
+
+.text-margin {
+  padding: 25px 10px;
+  margin-right: -20px;
+}
 /*# sourceMappingURL=project.css.map */

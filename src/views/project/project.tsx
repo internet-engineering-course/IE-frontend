@@ -5,6 +5,7 @@ import Bar from "src/views/common/bar/Bar.tsx";
 import 'src/scss/style.scss';
 import 'src/views/project/project.scss';
 import axios from 'axios';
+import Flaction from './Flaction';
 axios.defaults.baseURL = 'http://localhost:8080';
 
 export default class project extends Component<Props, State> {
@@ -40,20 +41,31 @@ export default class project extends Component<Props, State> {
 
     render() {
         return (
-			<div>
-				<Header isUserLoggedIn={true} />
-				<main>
-					<Bar height={'100px'}/>
-					<div className="container">
+            <div>
+                <Header isUserLoggedIn={true} />
+                <main>
+                    <Bar height={'100px'} />
+                    <div className="container">
                         <div className="background row">
                             <div className="col-md-3">
-                            <img src={this.state.imageUrl} alt="project image" className="project-image"/>
+                                <img src={this.state.imageUrl} alt="project image" className="project-image" />
+                            </div>
+                            <div className="col-md-9 text-margin">
+                                <div>
+                                    <h2>پروژه طراحی سایت جاب‌اونجا</h2>
+                                </div>
+                                <div className="my-3">
+                                    <Flaction flacColor={"#EF0920"} flacType={"flaticon-deadline"} text={"مهلت تمام شده"}>
+                                    </Flaction>
+                                    <Flaction flacColor={"#118991"} flacType={"flaticon-money-bag"} text={"بودجه: ۲۵۰۰ تومان"}>
+                                    </Flaction>
+                                </div>
                             </div>
                         </div>
                     </div>
-				</main>
-				<Footer />
-			</div>
+                </main>
+                <Footer />
+            </div>
         )
     }
 }
