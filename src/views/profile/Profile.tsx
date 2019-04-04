@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "src/views/common/Header";
 import Footer from "src/views/common/Footer";
 import Bar from "src/views/common/bar/Bar";
-import SkillBox, {SkillBoxType} from "src/views/profile/SkillBox";
+import SkillBox, { SkillBoxType } from "src/views/profile/SkillBox";
 import ProfilePhoto from "src/resources/img/profile.jpg";
 import "./Profile.css";
 
@@ -59,12 +59,49 @@ export default class Profile extends Component<Props, State> {
 								دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
 							</span>
 						</div>
+						<div className="make-rtl mx-3 mb-3">
+							<div className="row">
+								<h4 className="px-3 py-2">مهارت‌ها:</h4>
+								<form>
+									<select title="skillName" name="skillName">
+										<option value="0">
+											--انتخاب مهارت--
+										</option>
+										<option value="1">Python</option>
+										<option value="2">C++</option>
+										<option value="3">Java</option>
+										<option value="4">SQL</option>
+									</select>
+									<input
+										type="submit"
+										className="form-input"
+										value="افزودن مهارت"
+									/>
+								</form>
+							</div>
+						</div>
 						<div className="make-ltr">
 							<div className="row justify-content-start no-gutters">
-								<SkillBox skillName={'HTML'} skillPoints={5} type={SkillBoxType.Endorsable} />
-								<SkillBox skillName={'CSS'} skillPoints={3} type={SkillBoxType.Endorsed} />
-								<SkillBox skillName={'JavaScript'} skillPoints={16} type={SkillBoxType.Endorsed} />
-								<SkillBox skillName={'TypeScript'} skillPoints={2} type={SkillBoxType.Removable}/>
+								<SkillBox
+									skillName={"HTML"}
+									skillPoints={5}
+									type={SkillBoxType.Endorsable}
+								/>
+								<SkillBox
+									skillName={"CSS"}
+									skillPoints={3}
+									type={SkillBoxType.Endorsed}
+								/>
+								<SkillBox
+									skillName={"JavaScript"}
+									skillPoints={16}
+									type={SkillBoxType.Endorsed}
+								/>
+								<SkillBox
+									skillName={"TypeScript"}
+									skillPoints={2}
+									type={SkillBoxType.Removable}
+								/>
 							</div>
 						</div>
 					</section>
