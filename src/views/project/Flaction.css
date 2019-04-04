@@ -19,4 +19,20 @@
 .color {
   color: var(--flacColor);
 }
+
+.red {
+  color: #EF0920;
+}
+
+.blue {
+  color: #2D9299;
+}
+
+.green {
+  color: #008D3D;
+}
+
+.gray {
+  color: #767676;
+}
 /*# sourceMappingURL=Flaction.css.map */

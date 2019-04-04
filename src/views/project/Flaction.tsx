@@ -7,12 +7,8 @@ export default class Flaction extends Component<Props, State> {
         super(props);
     }
     render() {
-        document.documentElement.style.setProperty(
-            "--flacColor",
-            this.props.flacColor
-        );
         return (
-            <div className="color">
+            <div className={this.props.flacColor}>
                 <ul className="unorder-list">
                     <li><i className={this.props.flacType}></i></li>
                     <li>

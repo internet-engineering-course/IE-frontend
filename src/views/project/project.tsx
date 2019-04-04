@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import persianJs from 'persian';
 import Header from 'src/views/common/Header.tsx';
 import Footer from 'src/views/common/Footer.tsx';
 import Bar from "src/views/common/bar/Bar.tsx";
@@ -9,6 +10,7 @@ import Flaction from './Flaction';
 axios.defaults.baseURL = 'http://localhost:8080';
 
 export default class project extends Component<Props, State> {
+
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -40,6 +42,8 @@ export default class project extends Component<Props, State> {
     }
 
     render() {
+        const timeToDeadline = new Date(Date.now() - this.state.deadline);
+
         return (
             <div>
                 <Header isUserLoggedIn={true} />
@@ -52,13 +56,13 @@ export default class project extends Component<Props, State> {
                             </div>
                             <div className="col-md-9 text-margin">
                                 <div>
-                                    <h2>پروژه طراحی سایت جاب‌اونجا</h2>
+                                    <h2>{this.state.title}</h2>
                                 </div>
                                 <div className="my-3">
-                                    <Flaction flacColor={"#EF0920"} flacType={"flaticon-deadline"} text={"مهلت تمام شده"}>
-                                    </Flaction>
-                                    <Flaction flacColor={"#118991"} flacType={"flaticon-money-bag"} text={"بودجه: ۲۵۰۰ تومان"}>
-                                    </Flaction>
+                                    <Flaction flacColor={"gray"} flacType={"flaticon-deadline"} text={"زمان باقی‌مانده: " + timeToDeadline.getDay() + " روز " + timeToDeadline.getHours()+ " ساعت " + timeToDeadline.getMinutes()+ " دقیقه " + timeToDeadline.getSeconds() + " ثانیه "}></Flaction>
+                                    {/* <Flaction flacColor={"red"} flacType={"flaticon-deadline"} text={"مهلت تمام شده"}></Flaction> */}
+                                    <Flaction flacColor={"blue"} flacType={"flaticon-money-bag"} text={"بودجه:" + persianJs(this.state.budget).englishNumber() + " تومان"}></Flaction>
+                                    {/* <Flaction flacColor={"green"} flacType={"flaticon-check-mark"} text={"برنده: وحید محمدی"}></Flaction> */}
                                 </div>
                             </div>
                         </div>
