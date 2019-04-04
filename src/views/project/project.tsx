@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from 'src/views/common/Header.tsx'
 import Footer from 'src/views/common/Footer.tsx'
-import Background from 'src/views/common/Background.tsx'
+import Bar from "src/views/common/bar/Bar.tsx";
 
 export default class project extends Component<Props , State> {
     constructor(props: Props){
@@ -9,13 +9,13 @@ export default class project extends Component<Props , State> {
     }
     render() {
         return (
-        <div>
-            <Header isUserLoggedIn = {true}/>
-            <Background blueBackgroundHeight = {'100px'}>
-
-            </Background>
-            <Footer/>
-        </div>
+			<div>
+				<Header isUserLoggedIn={true} />
+				<main>
+					<Bar height={'100px'}/>
+				</main>
+				<Footer />
+			</div>
         )
     }
 }

@@ -1,0 +1,5 @@
+.bar {
+	background-color: #B9EFF2;
+	height: var(--Height);
+	box-shadow: inset 0px 1px 10px 1px rgba(0, 0, 0, 0.1);
+}

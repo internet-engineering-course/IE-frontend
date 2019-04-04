@@ -1,0 +1,14 @@
+.profile-bar {
+	width: 200px;
+	height: 30px;
+	display: block;
+	z-index: 3;
+	position: relative;
+	transform: skew(-32deg, 0deg);
+	box-shadow: -10px 0px 0px 0px #7ADBE3;
+	margin-right: 100px;
+}
+
+.dark-bar {
+	background-color: rgb(106, 201, 205, 0.85);
+}
