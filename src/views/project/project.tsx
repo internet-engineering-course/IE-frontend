@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from 'src/views/common/Header.tsx';
 import Footer from 'src/views/common/Footer.tsx';
-import Background from 'src/views/common/Background.tsx';
+import Bar from "src/views/common/bar/Bar.tsx";
 import 'src/scss/style.scss';
 import 'src/views/project/project.scss';
 import axios from 'axios';
@@ -40,21 +40,21 @@ export default class project extends Component<Props, State> {
 
     render() {
         return (
-            <div>
-                <Header isUserLoggedIn={true} />
-                <main>
-                    <Background blueBackgroundHeight={'100px'} />
-                    <div className="container">
+			<div>
+				<Header isUserLoggedIn={true} />
+				<main>
+					<Bar height={'100px'}/>
+					<div className="container">
                         <div className="background row">
                             <div className="col-md-3">
                             <img src={this.state.imageUrl} alt="project image" className="project-image"/>
                             </div>
                         </div>
                     </div>
-                </main>
-                <Footer />
-            </div>
-        );
+				</main>
+				<Footer />
+			</div>
+        )
     }
 }
 

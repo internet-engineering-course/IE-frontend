@@ -5,7 +5,7 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 
-import Profile from "src/views/profile/profile";
+import Profile from "src/views/profile/Profile";
 import Project from "src/views/project/project";
 
 ReactDOM.render(
