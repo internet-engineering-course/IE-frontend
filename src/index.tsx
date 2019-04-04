@@ -1,18 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 // import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css';
+import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
 
-import Home from 'src/views/home/home';
-import Project from 'src/views/project/project'
+import Profile from "src/views/profile/profile";
+import Project from "src/views/project/project";
 
 ReactDOM.render(
-  <Router>
-    <Route path="/project" component={Project} />
-  </Router>,
-  document.getElementById('root')
+	<Router>
+		<div>
+			<Route path="/project" component={Project} />
+			<Route path="/profile" component={Profile} />
+		</div>
+	</Router>,
+	document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
