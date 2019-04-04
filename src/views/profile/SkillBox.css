@@ -1,0 +1,58 @@
+.skill-box {
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+	margin: 5px 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+
+.point-box {
+	border-radius: 4px;
+	display: block;
+	margin: 5px;
+	text-align: center;
+	width: 24px;
+	height: 24px;
+	line-height: 26px;
+}
+
+.green-hover:hover {
+	font-size: 0px;
+	background-color: #04B800;
+	color: white;
+}
+
+.green-hover:hover:after {
+	font-size: 14px;
+	content: "+";
+}
+
+.red-hover:hover {
+	font-size: 0px;
+	background-color: #EF011C;
+	color: white;
+}
+
+.red-hover:hover:after {
+	font-size: 14px;
+	content: "-";
+}
+
+.point-green {
+	background-color: #04B800;
+	font-size: 14px;
+	color: white;
+}
+
+.point-blue {
+	background-color: #B9EFF2;
+	color: #156D6F;
+	font-size: 14px;
+}
+
+.skill-text {
+	margin: 10px;
+}

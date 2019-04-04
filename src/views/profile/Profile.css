@@ -33,3 +33,13 @@
 .dark-bar {
 	background-color: rgb(106, 201, 205, 0.85);
 }
+
+.profile-paragraph {
+	color: #464646;
+	font-weight: 300;
+	margin: 30px 30px;
+}
+
+.make-ltr {
+	direction: ltr;
+}
