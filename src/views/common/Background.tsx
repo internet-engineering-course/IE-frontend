@@ -10,13 +10,12 @@ export default class Background extends Component<Props, State> {
 
     render() {
         const blueBackgroundHeight: string = this.props.blueBackgroundHeight;
-        console.log(blueBackgroundHeight);
         document.documentElement.style.setProperty('--Height' , blueBackgroundHeight);
 
         return (
-            <main>
+            <div>
                 <section className="background-blue" />
-            </main>
+            </div>
         );
     }
 }
@@ -24,4 +23,4 @@ export default class Background extends Component<Props, State> {
 interface Props {
     blueBackgroundHeight: string
 }
-interface State { }
+interface State {}
