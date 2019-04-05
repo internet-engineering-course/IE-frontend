@@ -8,7 +8,13 @@ import ProfilePhoto from "src/resources/img/profile.jpg";
 import "./Profile.css";
 import { DEFAULT_USER_ID } from "src/constants/constants.ts";
 import { getAllSkills, Skill } from "src/api/SkillAPI";
-import { getUser, addUserSkill, deleteUserSkill, User } from "src/api/UserAPI";
+import {
+	getUser,
+	addUserSkill,
+	deleteUserSkill,
+	endorseUserSkill,
+	User
+} from "src/api/UserAPI";
 
 export default class Profile extends Component<any, State> {
 	constructor(props: any) {
@@ -65,19 +71,27 @@ export default class Profile extends Component<any, State> {
 		const { user } = this.state;
 		const loadSelfPage: boolean = DEFAULT_USER_ID == user.id;
 		const skillBoxes = user.skills.map(skill => {
-			const type = loadSelfPage
-				? SkillBoxType.Removable
-				: SkillBoxType.Endorsable;
+			if (loadSelfPage) {
+				skill.type = SkillBoxType.Removable
+			} else if (skill.type == undefined) {
+				skill.type = SkillBoxType.Endorsable
+			}
 			return (
 				<SkillBox
-					skillName={skill.name}
-					skillPoints={skill.point}
-					type={type}
+					skill={skill}
 					onPointsClick={() => {
-						if (type == SkillBoxType.Removable) {
+						if (skill.type == SkillBoxType.Removable) {
 							deleteUserSkill(skill.name)
 								.then(res => {
 									this.setState({ user: res.data });
+								})
+								.catch(error => console.error(error));
+						} else if (skill.type == SkillBoxType.Endorsable) {
+							endorseUserSkill(skill.name, user.id)
+								.then(res => {
+									skill.point = skill.point + 1;
+									skill.type = SkillBoxType.Endorsed;
+									this.setState({user: user})
 								})
 								.catch(error => console.error(error));
 						}

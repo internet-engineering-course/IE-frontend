@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./SkillBox.css";
+import { Skill } from "src/api/SkillAPI";
 export default class SkillBox extends Component<Props, State> {
 	render() {
 		var skillPointsClassName;
-		switch (this.props.type) {
+		switch (this.props.skill.type) {
 			case SkillBoxType.Endorsable:
 				skillPointsClassName = "point-blue green-hover point-box";
 				break;
@@ -26,12 +27,14 @@ export default class SkillBox extends Component<Props, State> {
 					<div className="row no-gutters align-items-center">
 						<div className="col-auto">
 							<span className="skill-text">
-								{this.props.skillName}
+								{this.props.skill.name}
 							</span>
 						</div>
-						<div className="col-auto" onClick={this.props.onPointsClick}>
+						<div
+							className="col-auto"
+							onClick={this.props.onPointsClick}>
 							<span className={skillPointsClassName}>
-								{this.props.skillPoints}
+								{this.props.skill.point}
 							</span>
 						</div>
 					</div>
@@ -48,10 +51,8 @@ export enum SkillBoxType {
 }
 
 interface Props {
-	skillName: string;
-	skillPoints: number;
-	type: SkillBoxType;
-	onPointsClick?(): void 
+	skill: Skill;
+	onPointsClick?(): void;
 }
 
 interface State {}
