@@ -11,3 +11,7 @@ export const getUser = (userId: number) => {
 export const addUserSkill = (skillName: string) => {
 	return API.put("/user", { skills: [{ name: skillName }] });
 };
+
+export const deleteUserSkill = (skillName: string) => {
+	return API.delete("/user", { data: { skills: [{ name: skillName }] } });
+};

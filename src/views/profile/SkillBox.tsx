@@ -29,7 +29,7 @@ export default class SkillBox extends Component<Props, State> {
 								{this.props.skillName}
 							</span>
 						</div>
-						<div className="col-auto ">
+						<div className="col-auto" onClick={this.props.onPointsClick}>
 							<span className={skillPointsClassName}>
 								{this.props.skillPoints}
 							</span>
@@ -51,6 +51,7 @@ interface Props {
 	skillName: string;
 	skillPoints: number;
 	type: SkillBoxType;
+	onPointsClick?(): void 
 }
 
 interface State {}

@@ -6,9 +6,12 @@ import SkillBox, { SkillBoxType } from "src/views/profile/SkillBox";
 import ProfilePhoto from "src/resources/img/profile.jpg";
 import "./Profile.css";
 import { DEFAULT_USER_ID } from "src/constants/constants.ts";
-import "src/api/ProfileAPI";
-import { getAllSkills, getUser, addUserSkill } from "src/api/ProfileAPI";
-import API from "src/api/API";
+import {
+	getAllSkills,
+	getUser,
+	addUserSkill,
+	deleteUserSkill
+} from "src/api/ProfileAPI";
 
 export default class Profile extends Component<any, State> {
 	constructor(props: any) {
@@ -81,6 +84,15 @@ export default class Profile extends Component<any, State> {
 					skillName={skill.name}
 					skillPoints={skill.point}
 					type={type}
+					onPointsClick={() => {
+						if (type == SkillBoxType.Removable) {
+							deleteUserSkill(skill.name)
+								.then(res => {
+									this.setState({ user: res.data });
+								})
+								.catch(error => console.error(error));
+						}
+					}}
 					key={skill.name}
 				/>
 			);
