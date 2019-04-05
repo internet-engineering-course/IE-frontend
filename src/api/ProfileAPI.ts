@@ -7,3 +7,7 @@ export const getAllSkills = () => {
 export const getUser = (userId: number) => {
 	return API.get("/user/" + userId);
 };
+
+export const addUserSkill = (skillName: string) => {
+	return API.put("/user", { skills: [{ name: skillName }] });
+};
