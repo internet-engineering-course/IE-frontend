@@ -17,7 +17,7 @@ ReactDOM.render(
 	<Router>
 		<div>
 			<Route path="/project" component={Project} />
-			<Route path="/profile" component={Profile} />
+			<Route path="/profile/:userId" component={Profile} />
 		</div>
 	</Router>,
 	document.getElementById("root")

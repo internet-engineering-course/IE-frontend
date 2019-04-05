@@ -7,8 +7,8 @@ import ProfilePhoto from "src/resources/img/profile.jpg";
 import "./Profile.css";
 import axios from "axios";
 
-export default class Profile extends Component<Props, State> {
-	constructor(props: Props) {
+export default class Profile extends Component<any, State> {
+	constructor(props: any) {
 		super(props);
 		this.state = {
 			user: {
@@ -36,8 +36,12 @@ export default class Profile extends Component<Props, State> {
 	}
 
 	componentDidMount() {
+		const {
+			match: { params }
+		} = this.props;
+
 		axios
-			.get("/user/1")
+			.get("/user/" + params.userId)
 			.then(res => {
 				this.setState({
 					user: {
@@ -75,7 +79,11 @@ export default class Profile extends Component<Props, State> {
 			);
 		});
 		const addSkillOptions = this.state.allSkills.map((skill, index) => {
-			return <option value={index + 1} key={skill.name}>{skill.name}</option>;
+			return (
+				<option value={index + 1} key={skill.name}>
+					{skill.name}
+				</option>
+			);
 		});
 
 		return (
@@ -162,7 +170,6 @@ interface User {
 	skills: Skill[];
 }
 
-interface Props {}
 interface State {
 	user: User;
 	allSkills: Skill[];
