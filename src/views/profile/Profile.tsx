@@ -3,6 +3,7 @@ import Header from "src/views/common/Header";
 import Footer from "src/views/common/Footer";
 import Bar from "src/views/common/bar/Bar";
 import SkillBox, { SkillBoxType } from "src/views/profile/SkillBox";
+import SelectInput from "src/views/common/input/SelectInput";
 import ProfilePhoto from "src/resources/img/profile.jpg";
 import "./Profile.css";
 import { DEFAULT_USER_ID } from "src/constants/constants.ts";
@@ -10,7 +11,9 @@ import {
 	getAllSkills,
 	getUser,
 	addUserSkill,
-	deleteUserSkill
+	deleteUserSkill,
+	User,
+	Skill
 } from "src/api/ProfileAPI";
 
 export default class Profile extends Component<any, State> {
@@ -31,13 +34,7 @@ export default class Profile extends Component<any, State> {
 					}
 				]
 			},
-			allSkills: [
-				{
-					name: "untitled",
-					point: 0
-				}
-			],
-			selectedSkill: ""
+			skillSelectOptions: []
 		};
 	}
 
@@ -54,22 +51,20 @@ export default class Profile extends Component<any, State> {
 
 		getAllSkills()
 			.then(res => {
-				this.setState({ allSkills: res.data });
+				const allSkills = res.data.map((skill: Skill) => {
+					return skill.name;
+				});
+				this.setState({ skillSelectOptions: allSkills });
 			})
 			.catch(error => console.error(error));
 	}
 
-	submitAddSkill = (event: FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		addUserSkill(this.state.selectedSkill)
+	submitAddSkill = (skillName: string) => {
+		addUserSkill(skillName)
 			.then(res => {
 				this.setState({ user: res.data });
 			})
 			.catch(error => console.error(error));
-	};
-
-	handleSelectSkill = (event: ChangeEvent<HTMLSelectElement>) => {
-		this.setState({ selectedSkill: event.target.value });
 	};
 
 	render() {
@@ -99,33 +94,13 @@ export default class Profile extends Component<any, State> {
 		});
 		var addSkillFrom = null;
 		if (loadSelfPage) {
-			const addSkillOptions = this.state.allSkills.map(skill => {
-				return (
-					<option value={skill.name} key={skill.name}>
-						{skill.name}
-					</option>
-				);
-			});
 			addSkillFrom = (
-				<div className="make-rtl mx-3 mb-3">
-					<div className="row">
-						<h4 className="px-3 py-2">مهارت‌ها:</h4>
-						<form onSubmit={this.submitAddSkill}>
-							<select
-								title="skillName"
-								name="skillName"
-								onChange={this.handleSelectSkill}>
-								<option value="0">--انتخاب مهارت--</option>
-								{addSkillOptions}
-							</select>
-							<input
-								type="submit"
-								className="form-input"
-								value="افزودن مهارت"
-							/>
-						</form>
-					</div>
-				</div>
+				<SelectInput
+					options={this.state.skillSelectOptions}
+					label={"مهارت‌ها:"}
+					defaultOption={"--انتخاب مهارت--"}
+					onSubmit={this.submitAddSkill}
+				/>
 			);
 		}
 
@@ -181,23 +156,7 @@ export default class Profile extends Component<any, State> {
 	}
 }
 
-interface Skill {
-	name: string;
-	point: number;
-}
-
-interface User {
-	id: number;
-	username: string;
-	firstname: string;
-	lastname: string;
-	jobTitle: string;
-	bio: string;
-	skills: Skill[];
-}
-
 interface State {
 	user: User;
-	allSkills: Skill[];
-	selectedSkill: string;
+	skillSelectOptions: string[];
 }

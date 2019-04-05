@@ -15,3 +15,18 @@ export const addUserSkill = (skillName: string) => {
 export const deleteUserSkill = (skillName: string) => {
 	return API.delete("/user", { data: { skills: [{ name: skillName }] } });
 };
+
+export interface Skill {
+	name: string;
+	point: number;
+}
+
+export interface User {
+	id: number;
+	username: string;
+	firstname: string;
+	lastname: string;
+	jobTitle: string;
+	bio: string;
+	skills: Skill[];
+}
