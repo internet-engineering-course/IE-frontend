@@ -6,29 +6,29 @@ import SkillBox, { SkillBoxType } from "src/views/profile/SkillBox";
 import ProfilePhoto from "src/resources/img/profile.jpg";
 import "./Profile.css";
 import axios from "axios";
+import { DEFAULT_USER_ID } from "src/constants/constants.ts";
 
 export default class Profile extends Component<any, State> {
 	constructor(props: any) {
 		super(props);
 		this.state = {
 			user: {
-				id: 1,
-				username: "ali",
-				firstname: "علی",
-				lastname: "شریف زاده",
-				jobTitle: "برنامه نویس وب",
-				bio:
-					"روی سنگ قبرم بنویسید: خدا بیامرز میخواست خیلیکارا بکنه ولی پول نداشت",
+				id: 0,
+				username: "untitled",
+				firstname: "untitled",
+				lastname: "untitled",
+				jobTitle: "untitled",
+				bio: "untitled",
 				skills: [
 					{
-						name: "HTML",
-						point: 5
+						name: "untitled",
+						point: 0
 					}
 				]
 			},
 			allSkills: [
 				{
-					name: "Python",
+					name: "untitled",
 					point: 0
 				}
 			]
@@ -68,23 +68,48 @@ export default class Profile extends Component<any, State> {
 
 	render() {
 		const { user } = this.state;
+		const loadSelfPage: boolean = DEFAULT_USER_ID == user.id;
 		const skillBoxes = user.skills.map(skill => {
+			const type = loadSelfPage
+				? SkillBoxType.Removable
+				: SkillBoxType.Endorsable;
 			return (
 				<SkillBox
 					skillName={skill.name}
 					skillPoints={skill.point}
-					type={SkillBoxType.Removable}
+					type={type}
 					key={skill.name}
 				/>
 			);
 		});
-		const addSkillOptions = this.state.allSkills.map((skill, index) => {
-			return (
-				<option value={index + 1} key={skill.name}>
-					{skill.name}
-				</option>
+		var addSkillFrom = null;
+		if (loadSelfPage) {
+			const addSkillOptions = this.state.allSkills.map((skill, index) => {
+				return (
+					<option value={index + 1} key={skill.name}>
+						{skill.name}
+					</option>
+				);
+			});
+			addSkillFrom = (
+				<div className="make-rtl mx-3 mb-3">
+					<div className="row">
+						<h4 className="px-3 py-2">مهارت‌ها:</h4>
+						<form>
+							<select title="skillName" name="skillName">
+								<option value="0">--انتخاب مهارت--</option>
+								{addSkillOptions}
+							</select>
+							<input
+								type="submit"
+								className="form-input"
+								value="افزودن مهارت"
+							/>
+						</form>
+					</div>
+				</div>
 			);
-		});
+		}
 
 		return (
 			<div>
@@ -124,24 +149,7 @@ export default class Profile extends Component<any, State> {
 								{user.bio}
 							</span>
 						</div>
-						<div className="make-rtl mx-3 mb-3">
-							<div className="row">
-								<h4 className="px-3 py-2">مهارت‌ها:</h4>
-								<form>
-									<select title="skillName" name="skillName">
-										<option value="0">
-											--انتخاب مهارت--
-										</option>
-										{addSkillOptions}
-									</select>
-									<input
-										type="submit"
-										className="form-input"
-										value="افزودن مهارت"
-									/>
-								</form>
-							</div>
-						</div>
+						{addSkillFrom}
 						<div className="make-ltr">
 							<div className="row justify-content-start no-gutters">
 								{skillBoxes}
