@@ -1,8 +1,5 @@
 import API from "./API";
-
-export const getAllSkills = () => {
-	return API.get("/skill");
-};
+import { Skill } from "./SkillAPI";
 
 export const getUser = (userId: number) => {
 	return API.get("/user/" + userId);
@@ -15,11 +12,6 @@ export const addUserSkill = (skillName: string) => {
 export const deleteUserSkill = (skillName: string) => {
 	return API.delete("/user", { data: { skills: [{ name: skillName }] } });
 };
-
-export interface Skill {
-	name: string;
-	point: number;
-}
 
 export interface User {
 	id: number;

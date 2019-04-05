@@ -7,14 +7,8 @@ import SelectInput from "src/views/common/input/SelectInput";
 import ProfilePhoto from "src/resources/img/profile.jpg";
 import "./Profile.css";
 import { DEFAULT_USER_ID } from "src/constants/constants.ts";
-import {
-	getAllSkills,
-	getUser,
-	addUserSkill,
-	deleteUserSkill,
-	User,
-	Skill
-} from "src/api/ProfileAPI";
+import { getAllSkills, Skill } from "src/api/SkillAPI";
+import { getUser, addUserSkill, deleteUserSkill, User } from "src/api/UserAPI";
 
 export default class Profile extends Component<any, State> {
 	constructor(props: any) {
