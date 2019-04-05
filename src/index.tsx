@@ -10,9 +10,6 @@ import "src/resources/my-icons-collection/font/flaticon.css";
 import Profile from "src/views/profile/Profile";
 import Project from "src/views/project/project";
 
-import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8080";
-
 ReactDOM.render(
 	<Router>
 		<div>

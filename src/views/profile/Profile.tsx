@@ -5,8 +5,9 @@ import Bar from "src/views/common/bar/Bar";
 import SkillBox, { SkillBoxType } from "src/views/profile/SkillBox";
 import ProfilePhoto from "src/resources/img/profile.jpg";
 import "./Profile.css";
-import axios from "axios";
 import { DEFAULT_USER_ID } from "src/constants/constants.ts";
+import "src/api/ProfileAPI";
+import { getAllSkills, getUser } from "src/api/ProfileAPI";
 
 export default class Profile extends Component<any, State> {
 	constructor(props: any) {
@@ -40,8 +41,7 @@ export default class Profile extends Component<any, State> {
 			match: { params }
 		} = this.props;
 
-		axios
-			.get("/user/" + params.userId)
+		getUser(params.userId)
 			.then(res => {
 				this.setState({
 					user: {
@@ -55,15 +55,13 @@ export default class Profile extends Component<any, State> {
 					}
 				});
 			})
-			.catch(error => console.log(error));
-		axios
-			.get("/skill")
+			.catch(error => console.error(error));
+
+		getAllSkills()
 			.then(res => {
-				this.setState({
-					allSkills: res.data
-				});
+				this.setState({ allSkills: res.data });
 			})
-			.catch(error => console.log(error));
+			.catch(error => console.error(error));
 	}
 
 	render() {
