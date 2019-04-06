@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Header from 'src/views/common/Header.tsx';
 import Footer from 'src/views/common/Footer.tsx';
 import Bar from "src/views/common/bar/Bar.tsx";
@@ -89,26 +88,7 @@ export default class project extends Component<Props, State> {
                             </div>
                             <div className="make-ltr">
                                 <div className="row">
-                                    <SkillBox
-                                        skillName={"HTML"}
-                                        skillPoints={5}
-                                        type={SkillBoxType.Endorsable}
-                                    />
-                                    <SkillBox
-                                        skillName={"CSS"}
-                                        skillPoints={3}
-                                        type={SkillBoxType.Endorsed}
-                                    />
-                                    <SkillBox
-                                        skillName={"JavaScript"}
-                                        skillPoints={16}
-                                        type={SkillBoxType.Endorsed}
-                                    />
-                                    <SkillBox
-                                        skillName={"TypeScript"}
-                                        skillPoints={2}
-                                        type={SkillBoxType.Removable}
-                                    />
+
                                 </div>
                             </div>
                         </div>
