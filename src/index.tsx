@@ -13,7 +13,7 @@ import Project from "src/views/project/project";
 ReactDOM.render(
 	<Router>
 		<div>
-			<Route path="/project" component={Project} />
+			<Route path="/project/:projectId" component={Project} />
 			<Route path="/profile/:userId" component={Profile} />
 		</div>
 	</Router>,

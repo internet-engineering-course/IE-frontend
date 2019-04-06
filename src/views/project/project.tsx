@@ -6,6 +6,10 @@ import SkillBox, { SkillBoxType } from 'src/views/common/SkillBox';
 import 'src/scss/style.scss';
 import 'src/views/project/project.scss';
 import axios from 'axios';
+import {
+    Project,
+    getProject
+} from 'src/api/ProjectAPI';
 import Flaction from './Flaction';
 
 axios.defaults.baseURL = 'http://localhost:8080';
@@ -15,35 +19,35 @@ export default class project extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            id: "",
-            title: "",
-            description: "",
-            imageUrl: "",
-            budget: 0,
-            deadline: 0,
-            skills: {},
+            project: {
+                id: "untitled",
+                title: "untitled",
+                description: "untitled",
+                imageUrl: "untitled",
+                budget: 0,
+                deadline: 0,
+                skills: {}
+            },
             error: ""
         }
     }
 
     componentDidMount = () => {
-        axios.get(`/project`)
+        const {
+            match: { params }
+        } = this.props;
+
+        getProject(params.projectId)
             .then(res => {
-                this.setState({
-                    id: res.data[1].id,
-                    title: res.data[1].title,
-                    description: res.data[1].description,
-                    imageUrl: res.data[1].imageUrl,
-                    budget: res.data[1].budget,
-                    deadline: res.data[1].deadline,
-                    skills: res.data[1].skills
-                });
+                this.setState({ project: res.data });
             })
-            .catch(error => this.setState({ error }))
+            .catch(error => console.error(error));
+
     }
 
     render() {
-        const timeToDeadline = new Date(Date.now() - this.state.deadline);
+        console.log(this.state.project.budget);
+        const timeToDeadline = new Date(Date.now() - this.state.project.deadline);
 
         return (
             <div>
@@ -53,16 +57,16 @@ export default class project extends Component<Props, State> {
                     <div className="container">
                         <div className="background row">
                             <div className="col-md-3">
-                                <img src={this.state.imageUrl} alt="project image" className="project-image" />
+                                <img src={this.state.project.imageUrl} alt="project image" className="project-image" />
                             </div>
                             <div className="col-md-9 text-margin">
                                 <div>
-                                    <h2>{this.state.title}</h2>
+                                    <h2>{this.state.project.title}</h2>
                                 </div>
                                 <div className="my-3">
                                     <Flaction flacColor={"gray"} flacType={"flaticon-deadline"} text={"زمان باقی‌مانده: " + timeToDeadline.getDay() + " روز " + timeToDeadline.getHours() + " ساعت " + timeToDeadline.getMinutes() + " دقیقه " + timeToDeadline.getSeconds() + " ثانیه "}></Flaction>
                                     {/* <Flaction flacColor={"red"} flacType={"flaticon-deadline"} text={"مهلت تمام شده"}></Flaction> */}
-                                    <Flaction flacColor={"blue"} flacType={"flaticon-money-bag"} text={"بودجه:" + this.state.budget + " تومان"}></Flaction>
+                                    <Flaction flacColor={"blue"} flacType={"flaticon-money-bag"} text={"بودجه:" + this.state.project.budget + " تومان"}></Flaction>
                                     {/* <Flaction flacColor={"green"} flacType={"flaticon-check-mark"} text={"برنده: وحید محمدی"}></Flaction> */}
                                 </div>
                                 <div className="my-3">
@@ -70,7 +74,7 @@ export default class project extends Component<Props, State> {
                                 </div>
                                 <div>
                                     <p>
-                                        {this.state.description}
+                                        {this.state.project.description}
                                     </p>
                                 </div>
                             </div>
@@ -101,14 +105,10 @@ export default class project extends Component<Props, State> {
     }
 }
 
-interface Props { };
+interface Props {
+    match: any
+};
 interface State {
-    id: string,
-    title: string,
-    description: string,
-    imageUrl: string,
-    budget: number,
-    deadline: number,
-    skills: {},
-    error: string
+    project: Project;
+    error: string;
 };

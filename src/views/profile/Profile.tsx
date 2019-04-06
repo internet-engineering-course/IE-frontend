@@ -2,7 +2,6 @@ import React, { Component, FormEvent, ChangeEvent } from "react";
 import Header from "src/views/common/Header";
 import Footer from "src/views/common/Footer";
 import Bar from "src/views/common/bar/Bar";
-
 import SkillBox, { SkillBoxType } from "src/views/common/SkillBox";
 import SelectInput from "src/views/common/input/SelectInput";
 import ProfilePhoto from "src/resources/img/profile.jpg";
