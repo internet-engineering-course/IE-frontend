@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import persianJs from 'persian';
+
 import Header from 'src/views/common/Header.tsx';
 import Footer from 'src/views/common/Footer.tsx';
 import Bar from "src/views/common/bar/Bar.tsx";
+import SkillBox, { SkillBoxType } from 'src/views/common/SkillBox';
 import 'src/scss/style.scss';
 import 'src/views/project/project.scss';
 import axios from 'axios';
 import Flaction from './Flaction';
+
 axios.defaults.baseURL = 'http://localhost:8080';
 
 export default class project extends Component<Props, State> {
@@ -59,14 +61,59 @@ export default class project extends Component<Props, State> {
                                     <h2>{this.state.title}</h2>
                                 </div>
                                 <div className="my-3">
-                                    <Flaction flacColor={"gray"} flacType={"flaticon-deadline"} text={"زمان باقی‌مانده: " + timeToDeadline.getDay() + " روز " + timeToDeadline.getHours()+ " ساعت " + timeToDeadline.getMinutes()+ " دقیقه " + timeToDeadline.getSeconds() + " ثانیه "}></Flaction>
+                                    <Flaction flacColor={"gray"} flacType={"flaticon-deadline"} text={"زمان باقی‌مانده: " + timeToDeadline.getDay() + " روز " + timeToDeadline.getHours() + " ساعت " + timeToDeadline.getMinutes() + " دقیقه " + timeToDeadline.getSeconds() + " ثانیه "}></Flaction>
                                     {/* <Flaction flacColor={"red"} flacType={"flaticon-deadline"} text={"مهلت تمام شده"}></Flaction> */}
-                                    <Flaction flacColor={"blue"} flacType={"flaticon-money-bag"} text={"بودجه:" + persianJs(this.state.budget).englishNumber() + " تومان"}></Flaction>
+                                    <Flaction flacColor={"blue"} flacType={"flaticon-money-bag"} text={"بودجه:" + this.state.budget + " تومان"}></Flaction>
                                     {/* <Flaction flacColor={"green"} flacType={"flaticon-check-mark"} text={"برنده: وحید محمدی"}></Flaction> */}
+                                </div>
+                                <div className="my-3">
+                                    <h5>توضیحات</h5>
+                                </div>
+                                <div>
+                                    <p>
+                                        {this.state.description}
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div className="container project-skill ">
+                        <div className="row">
+                            <div className="dashed-line"></div>
+                        </div>
+                        <div className="py-4 px-4">
+                            <div className="make-rtl row">
+                                <div className="blue-color">
+                                    <h5>مهارت‌های لازم:</h5>
+                                </div>
+                            </div>
+                            <div className="make-ltr">
+                                <div className="row">
+                                    <SkillBox
+                                        skillName={"HTML"}
+                                        skillPoints={5}
+                                        type={SkillBoxType.Endorsable}
+                                    />
+                                    <SkillBox
+                                        skillName={"CSS"}
+                                        skillPoints={3}
+                                        type={SkillBoxType.Endorsed}
+                                    />
+                                    <SkillBox
+                                        skillName={"JavaScript"}
+                                        skillPoints={16}
+                                        type={SkillBoxType.Endorsed}
+                                    />
+                                    <SkillBox
+                                        skillName={"TypeScript"}
+                                        skillPoints={2}
+                                        type={SkillBoxType.Removable}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </main>
                 <Footer />
             </div>

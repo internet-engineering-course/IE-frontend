@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "src/views/common/Header";
 import Footer from "src/views/common/Footer";
 import Bar from "src/views/common/bar/Bar";
-import SkillBox, { SkillBoxType } from "src/views/profile/SkillBox";
+import SkillBox, { SkillBoxType } from "src/views/common/SkillBox";
 import ProfilePhoto from "src/resources/img/profile.jpg";
 import "./Profile.css";
 
