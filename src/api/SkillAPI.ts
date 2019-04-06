@@ -1,5 +1,5 @@
 import API from "./API";
-import { SkillBoxType } from "src/views/profile/SkillBox";
+import { SkillBoxType } from "src/views/common/SkillBox";
 
 export const getAllSkills = () => {
 	return API.get("/skill");
