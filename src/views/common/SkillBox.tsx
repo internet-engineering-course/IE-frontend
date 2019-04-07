@@ -19,6 +19,10 @@ export default class SkillBox extends Component<Props, State> {
 			
 			case SkillBoxType.Simple:
 				skillPointsClassName = "point-blue point-box";
+				break;
+
+			case SkillBoxType.None:
+				skillPointsClassName = "point-box"
 
 			default:
 				break;
@@ -51,7 +55,8 @@ export enum SkillBoxType {
 	Removable,
 	Endorsable,
 	Endorsed,
-	Simple
+	Simple,
+	None
 }
 
 interface Props {

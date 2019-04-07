@@ -1,86 +1,52 @@
 import React, { Component } from 'react';
-import { ErrorHandlerService } from 'src/core/error-handler-service';
-import User from 'src/views/user/user';
-import './home.scss';
-import Header from 'src/views/common/Header';
 
-export default class Home extends Component<Props, State> {
-  getUsers() {
-    fetch(new Request('http://localhost:8001/posts/1', { method: 'GET' }))
-      .then(response => {
-        if (!response.ok) ErrorHandlerService(response);
-        return response.json();
-      })
-      .then(response => {
-        console.log('TCL: Home -> getUsers -> response', response);
-      })
-      .catch(error => {
-        console.log('TCL: Home -> getUsers -> error', error);
-        ErrorHandlerService(error);
-      });
-  }
-  handlePnClick: (inputValue: string) => void = inputValue => {
-    console.log('TCL: Home -> handlePnClick: -> inputValue', inputValue);
-  };
-
-  addSkill: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void = event => {
-    this.setState({ skills: [...this.state.skills, { name: 'js', endorse: 333 }] });
-  };
-  removeSkill: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void = event => {
-    this.setState({ skills: this.state.skills.filter(s => s.name === 'js') });
-  };
+import Header from 'src/views/common/Header.tsx';
+import Footer from 'src/views/common/Footer.tsx';
+import Bar from "src/views/common/bar/Bar.tsx";
+import ProjectInfo from "src/views/home/ProjectInfo.tsx";
+import "src/scss/style.scss";
+import "src/views/home/home.scss";
+export default class home extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = {
-      skills: [{ name: 'HTML', endorse: 4 }, { name: 'CSS', endorse: 5 }]
-    };
   }
-  componentDidMount = () => {
-    this.getUsers();
-  };
-  componentWillUnmount = () => {};
 
   render() {
-    const { skills } = this.state;
-
-    const skillsComp = skills.map((s, i) => (
-      <div key={i}>
-        <span>{s.name}</span>
-        <span>{s.endorse}</span>
-      </div>
-    ));
-
     return (
       <div>
-        {/* <section>
-          <p>Add skill section</p>
-          <button onClick={this.addSkill}>add skill</button>
-        </section>
-        <section>
-          <p>Remove skill section</p>
-          <button onClick={this.removeSkill}>remove skill</button>
-        </section>
-        <section>
-          <User pnClick={this.handlePnClick}>
-            <span id="span-test">test</span>
-          </User>
-        </section>
-        <section>{skillsComp}</section> */}
+        <Header isUserLoggedIn={true} />
+        <main>
+          <Bar height={'250px'}>
+            <div className="container">
+              <h2 className="header-margin">
+                <b className="blue-color">
+                  جاب‌اونجا خوب است!
+                  </b>
+              </h2>
+              <div className="pr-4 text-style">
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
+              </div>
+              <div className="row search">
+                <input className="search-input" type="search" placeholder="جستجو در جاب‌اونجا" />
+                <button type="submit" className="search-button">جستجو</button>
+              </div>
+            </div>
+          </Bar>
+          <div className="container main">
+            <div className="users">
+            </div>
+            <div className="projects">
+              <ProjectInfo></ProjectInfo>
+            </div>
+
+          </div>
+
+        </main>
+        <Footer />
       </div>
-    );
+    )
   }
-  // onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-  //   if (event.ctrlKey) {
-  //     this.setState((state, props) => ({ title: `${state.title} - new title` }));
-  //   }
-  // }
 }
 
-interface State {
-  skills: Skill[];
-}
-interface Skill {
-  name: string;
-  endorse: number;
-}
-interface Props {}
+interface Props { }
+interface State { }

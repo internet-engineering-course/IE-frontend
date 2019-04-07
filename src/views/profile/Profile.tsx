@@ -5,7 +5,7 @@ import Bar from "src/views/common/bar/Bar";
 import SkillBox, { SkillBoxType } from "src/views/common/SkillBox";
 import SelectInput from "src/views/common/input/SelectInput";
 import ProfilePhoto from "src/resources/img/profile.jpg";
-import "./Profile.css";
+import "./Profile.scss";
 import { DEFAULT_USER_ID } from "src/constants/constants.ts";
 import { getAllSkills, Skill } from "src/api/SkillAPI";
 import {

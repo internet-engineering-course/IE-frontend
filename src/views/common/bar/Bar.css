@@ -3,3 +3,55 @@
 	height: var(--Height);
 	box-shadow: inset 0px 1px 10px 1px rgba(0, 0, 0, 0.1);
 }
+
+.header-margin {
+	padding-top: 1.25em;
+	padding-bottom: 0.25em;
+}
+
+.text-style {
+	font-weight: 300;
+	font-size: 14px;
+}
+
+.search-button {
+	background-color: #00AEBF;
+	color: #FCFEFE;
+	font-weight: 100;
+	font-size: 18px;
+	border: none;
+	height: 40px;
+	width: 4em;
+}
+
+.search-button:hover {
+	background-color: #007883;
+}
+
+.search {
+	border-bottom: solid #00AEBF;
+	display: flex;
+	justify-content: center;
+	margin: 1em 15em;
+	padding: 5px 5px;
+	background-color: #D7F8FA;
+}
+
+.search-input {
+	vertical-align: center;
+	flex-grow: 1;
+	background-color: unset;
+}
+
+::placeholder {
+	color: #75B3B5;
+	opacity: 1;
+}
+
+:-ms-input-placeholder {
+	color: #75B3B5;
+}
+
+::-ms-input-placeholder {
+	color: #75B3B5;
+}

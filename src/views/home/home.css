@@ -1,6 +1,20 @@
-section {
-  background: #cccccc;
-  margin: 10px 0;
-  padding: 40px;
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.projects {
+  -webkit-box-flex: 8;
+      -ms-flex-positive: 8;
+          flex-grow: 8;
+  margin: -1em 1em;
+}
+
+.users {
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  margin: -1em 1em;
 }
 /*# sourceMappingURL=home.css.map */

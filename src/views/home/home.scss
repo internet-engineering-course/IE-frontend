@@ -1,5 +1,13 @@
-section {
-  background: #cccccc;
-  margin: 10px 0;
-  padding: 40px;
+.main{
+  display: flex;
+}
+
+.projects{
+  flex-grow: 8;
+  margin:-1em 1em;
+}
+
+.users{
+  flex-grow:2;
+  margin:-1em 1em;
 }

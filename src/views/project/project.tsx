@@ -104,7 +104,7 @@ export default class project extends Component<Props, State> {
                                 <h5>مهارت‌های لازم:</h5>
                             </div>
                             <div className="make-ltr">
-                                <div className="row">
+                                <div className="row no-gutters">
                                     {skillBoxes}
                                 </div>
                             </div>
