@@ -16,8 +16,8 @@ import {
 	User
 } from "src/api/UserAPI";
 
-export default class Profile extends Component<any, State> {
-	constructor(props: any) {
+export default class Profile extends Component<Props, State> {
+	constructor(props: Props) {
 		super(props);
 		this.state = {
 			user: {
@@ -162,6 +162,10 @@ export default class Profile extends Component<any, State> {
 			</div>
 		);
 	}
+}
+
+interface Props{
+	match:any
 }
 
 interface State {

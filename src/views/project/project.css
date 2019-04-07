@@ -18,4 +18,91 @@
   padding: 25px 10px;
   margin-right: -20px;
 }
+
+.dashed-line {
+  border: none;
+  border-top: 2px dashed #00D3DE;
+  color: #fff;
+  background-color: #fff;
+  height: 1px;
+  width: 100%;
+}
+
+.project-skill {
+  background-color: #F9F9F9;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #dee2e6;
+}
+
+.blue-color {
+  color: #118991;
+}
+
+.bid-container {
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+input {
+  border: none;
+  height: 35px;
+  padding-right: 5px;
+  outline: none;
+}
+
+.input-color {
+  color: #69BEC6;
+}
+
+.input-border {
+  border: solid;
+  border-color: #00BED2;
+  border-width: 2px;
+  border-radius: 5px;
+  height: 45px;
+  padding: 2px;
+  padding-left: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.button {
+  background-color: #00AEBF;
+  color: #FCFEFE;
+  font-weight: 100;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  height: 45px;
+  width: 55px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #007883;
+}
+
+form {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
 /*# sourceMappingURL=project.css.map */
