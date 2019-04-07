@@ -5,16 +5,34 @@
 }
 
 .projects {
-  -webkit-box-flex: 8;
-      -ms-flex-positive: 8;
-          flex-grow: 8;
-  margin: -1em 1em;
+  margin: -2em 1em 0 1em;
 }
 
 .users {
-  -webkit-box-flex: 2;
-      -ms-flex-positive: 2;
-          flex-grow: 2;
-  margin: -1em 1em;
+  -ms-flex-negative: 4;
+      flex-shrink: 4;
+  margin: -2em 0 0 1em;
+}
+
+.user-search {
+  border: solid white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+  padding: 5px 20px;
+  margin-bottom: 0.75em;
+  background-color: #F9F9F9;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.user-search-input {
+  vertical-align: center;
+  background-color: unset;
 }
 /*# sourceMappingURL=home.css.map */

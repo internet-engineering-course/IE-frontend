@@ -1,16 +1,44 @@
 .project{
     background-color: white;
-    padding: 1em 0;
+    padding: 1em 0 0.5em 0;
+    border-radius: 5px;
+    margin-bottom:1em;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 .image{
+    display: inherit;
+    margin-left: 0;
+    margin-right: 0;
     border: 1px solid rgb(243, 243, 243);
-    position: relative;
-    width: 7em;
-    height: auto;
+    max-width: 100%;
+    max-height: auto;
 }
 
 .description{
     font-weight: 100;
     padding-left: 3em;
+}
+
+.time{
+    background-color: #F5F5F5;
+    padding: 0.2em 0.2em;
+    font-size: 12px;
+    margin-left: 2em;
+    text-align: center;
+    color: #7F7F7F;
+}
+
+.title{
+    flex-grow: 1;
+}
+
+.skills-color{
+    color:#ABABAB;
+    font-weight: 400;
+    font-size: 0.9em;
 }

@@ -4,6 +4,7 @@ import Header from 'src/views/common/Header.tsx';
 import Footer from 'src/views/common/Footer.tsx';
 import Bar from "src/views/common/bar/Bar.tsx";
 import ProjectInfo from "src/views/home/ProjectInfo.tsx";
+import UserInfo from "src/views/home/UserInfo.tsx";
 import "src/scss/style.scss";
 import "src/views/home/home.scss";
 export default class home extends Component<Props, State> {
@@ -12,6 +13,7 @@ export default class home extends Component<Props, State> {
   }
 
   render() {
+    // TODO: get user and project data from server and add skill of project
     return (
       <div>
         <Header isUserLoggedIn={true} />
@@ -34,8 +36,19 @@ export default class home extends Component<Props, State> {
           </Bar>
           <div className="container main">
             <div className="users">
+              <div className="user-search">
+                <input className="user-search-input" type="search" placeholder="جستجو نام کاربر" />
+              </div>
+              <div>
+                <UserInfo></UserInfo>
+                <UserInfo></UserInfo>
+                <UserInfo></UserInfo>
+                <UserInfo></UserInfo>
+              </div>
             </div>
             <div className="projects">
+              <ProjectInfo></ProjectInfo>
+              <ProjectInfo></ProjectInfo>
               <ProjectInfo></ProjectInfo>
             </div>
 

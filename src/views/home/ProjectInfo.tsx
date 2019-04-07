@@ -15,21 +15,22 @@ export default class ProjectInfo extends Component<Props, State> {
 
         return (
             <div className="row project">
-                <div className="col-md-2">
+                <div className="col-2 pr-3 pl-0">
                     <img src={AX} alt="project image" className="image" />
                 </div>
-                <div className="col-md-10 py-1 px-2">
-                <div>
-                    <h5>وبسایت فروشگاهی مشابه دیجی‌کالا</h5>
-                    زمان باقی مانده
-                </div>
-                    <p className="description mb-0">یک فروشگاه اینترنتی با قابلیت مدیریت حرفه‌ای سبد خرید حرفه‌ای مقایسه محصولات ارسال پیامک و ایمیل گزارش گیری جامع قالب...</p>
-                    <p className="blue"><b>بودجه: ۲۵۰۰ تومان</b></p>
-                    <div>
-                        <p>
-                            مهارت‌ها
+                <div className="col-10 p-0 pr-3">
+                    <div className="row m-0">
+                        <h5 className="title">وبسایت فروشگاهی مشابه دیجی‌کالا</h5>
+                        <p className="time">
+                        زمان باقی مانده:۱۷:۲۵
                         </p>
-                        
+                    </div>
+                    <p className="description mb-0">یک فروشگاه اینترنتی با قابلیت مدیریت حرفه‌ای سبد خرید حرفه‌ای مقایسه محصولات ارسال پیامک و ایمیل گزارش گیری جامع قالب...</p>
+                    <p className="blue my-1"><b>بودجه: ۲۵۰۰ تومان</b></p>
+                    <div>
+                        <p className="m-0 skills-color">
+                            مهارت‌ها:
+                        </p>
                     </div>
                 </div>
             </div>
