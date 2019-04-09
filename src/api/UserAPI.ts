@@ -13,6 +13,10 @@ export const deleteUserSkill = (skillName: string) => {
 	return API.delete("/user", { data: { skills: [{ name: skillName }] } });
 };
 
+export const getEndorsableSkills = (userId: string) => {
+	return API.get('/user/' + userId + '/endorse')
+}
+
 export const endorseUserSkill = (skillName: string, userId: number) => {
 	return API.post("user/" + userId + "/endorse", { skillName: skillName });
 };

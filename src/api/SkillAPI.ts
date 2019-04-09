@@ -10,3 +10,8 @@ export interface Skill {
 	point: number;
 	type?: SkillBoxType;
 }
+
+export interface EndorsableSkill {
+	skill: Skill,
+	endorsable: boolean
+}

@@ -7,11 +7,12 @@ import SelectInput from "src/views/common/input/SelectInput";
 import ProfilePhoto from "src/resources/img/profile.jpg";
 import "./Profile.scss";
 import { DEFAULT_USER_ID } from "src/constants/constants.ts";
-import { getAllSkills, Skill } from "src/api/SkillAPI";
+import { getAllSkills, Skill, EndorsableSkill } from "src/api/SkillAPI";
 import {
 	getUser,
 	addUserSkill,
 	deleteUserSkill,
+	getEndorsableSkills,
 	endorseUserSkill,
 	User
 } from "src/api/UserAPI";
@@ -34,7 +35,8 @@ export default class Profile extends Component<Props, State> {
 					}
 				]
 			},
-			skillSelectOptions: []
+			skillSelectOptions: [],
+			endorsableSkills: []
 		};
 	}
 
@@ -57,6 +59,12 @@ export default class Profile extends Component<Props, State> {
 				this.setState({ skillSelectOptions: allSkills });
 			})
 			.catch(error => console.error(error));
+
+		getEndorsableSkills(params.userId)
+			.then(res => {
+				this.setState({ endorsableSkills: res.data });
+			})
+			.catch(error => console.error(error));
 	}
 
 	submitAddSkill = (skillName: string) => {
@@ -70,11 +78,14 @@ export default class Profile extends Component<Props, State> {
 	render() {
 		const { user } = this.state;
 		const loadSelfPage: boolean = DEFAULT_USER_ID == user.id;
-		const skillBoxes = user.skills.map(skill => {
+		const skillBoxes = this.state.endorsableSkills.map(eSkill => {
+			const skill = eSkill.skill;
 			if (loadSelfPage) {
-				skill.type = SkillBoxType.Removable
-			} else if (skill.type == undefined) {
-				skill.type = SkillBoxType.Endorsable
+				skill.type = SkillBoxType.Removable;
+			} else if (eSkill.endorsable) {
+				skill.type = SkillBoxType.Endorsable;
+			} else {
+				skill.type = SkillBoxType.Endorsed;
 			}
 			return (
 				<SkillBox
@@ -91,7 +102,8 @@ export default class Profile extends Component<Props, State> {
 								.then(res => {
 									skill.point = skill.point + 1;
 									skill.type = SkillBoxType.Endorsed;
-									this.setState({user: user})
+									eSkill.endorsable = false;
+									this.setState({ user: user });
 								})
 								.catch(error => console.error(error));
 						}
@@ -164,11 +176,12 @@ export default class Profile extends Component<Props, State> {
 	}
 }
 
-interface Props{
-	match:any
+interface Props {
+	match: any;
 }
 
 interface State {
 	user: User;
 	skillSelectOptions: string[];
+	endorsableSkills: EndorsableSkill[];
 }
