@@ -7,10 +7,10 @@ import "bootstrap/dist/css/bootstrap.css";
 import "src/resources/fonts/iransans-fonts/fonts.css";
 import "src/resources/my-icons-collection/font/flaticon.css";
 
-import Home from "src/views/home/home"
+import Home from "src/views/home/home";
 import Profile from "src/views/profile/Profile";
 import Project from "src/views/project/project";
-
+import Register from "src/views/register/Register";
 
 ReactDOM.render(
 	<Router>
@@ -18,7 +18,7 @@ ReactDOM.render(
 			<Route path="/project/:projectId" component={Project} />
 			<Route path="/profile/:userId" component={Profile} />
 			<Route path="/home" component={Home} />
-
+			<Route path="/register" component={Register} />
 		</div>
 	</Router>,
 	document.getElementById("root")

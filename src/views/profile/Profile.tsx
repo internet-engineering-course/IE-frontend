@@ -78,7 +78,12 @@ export default class Profile extends Component<Props, State> {
 	render() {
 		const { user } = this.state;
 		const loadSelfPage: boolean = DEFAULT_USER_ID == user.id;
-		const skillBoxes = this.state.endorsableSkills.map(eSkill => {
+		const skills = loadSelfPage
+			? user.skills.map(skill => {
+					return { skill: skill, endorsable: false };
+			  })
+			: this.state.endorsableSkills;
+		const skillBoxes = skills.map(eSkill => {
 			const skill = eSkill.skill;
 			if (loadSelfPage) {
 				skill.type = SkillBoxType.Removable;

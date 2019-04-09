@@ -19,7 +19,6 @@ export default class SelectInput extends Component<Props, State> {
 	};
 
 	render() {
-		console.log(this.props.options)
 		const selectOptions = this.props.options.map(option => {
 			return (
 				<option value={option} key={option}>
