@@ -3,7 +3,7 @@ import "./SkillBox.css";
 import { Skill } from "src/api/SkillAPI";
 export default class SkillBox extends Component<Props, State> {
 	render() {
-		var skillPointsClassName;
+		var skillPointsClassName , skillBackground;
 		switch (this.props.skill.type) {
 			case SkillBoxType.Endorsable:
 				skillPointsClassName = "point-blue green-hover point-box";
@@ -16,16 +16,29 @@ export default class SkillBox extends Component<Props, State> {
 			case SkillBoxType.Endorsed:
 				skillPointsClassName = "point-green point-box";
 				break;
-			
+
 			case SkillBoxType.Simple:
 				skillPointsClassName = "point-blue point-box";
 				break;
 
 			case SkillBoxType.None:
-				skillPointsClassName = "point-box"
+				skillPointsClassName = "";
+				skillBackground = "gray-background";
+				break;
 
 			default:
 				break;
+		}
+
+		var Point = null;
+		if (!SkillBoxType.None) {
+			Point = (<div
+				className="col-auto"
+				onClick={this.props.onPointsClick}>
+				<span className={skillPointsClassName}>
+					{this.props.skill.point}
+				</span>
+			</div>);
 		}
 
 		return (
@@ -37,12 +50,8 @@ export default class SkillBox extends Component<Props, State> {
 								{this.props.skill.name}
 							</span>
 						</div>
-						<div
-							className="col-auto"
-							onClick={this.props.onPointsClick}>
-							<span className={skillPointsClassName}>
-								{this.props.skill.point}
-							</span>
+						<div className={skillBackground}>
+							{Point}
 						</div>
 					</div>
 				</div>
@@ -64,4 +73,4 @@ interface Props {
 	onPointsClick?(): void;
 }
 
-interface State {}
+interface State { }

@@ -9,6 +9,10 @@
 	-o-border-radius: 5px;
 }
 
+.gray-background{
+	font-size: 100px;
+}
+
 .point-box {
 	border-radius: 4px;
 	display: block;

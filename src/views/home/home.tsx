@@ -7,12 +7,30 @@ import ProjectInfo from "src/views/home/ProjectInfo.tsx";
 import UserInfo from "src/views/home/UserInfo.tsx";
 import "src/scss/style.scss";
 import "src/views/home/home.scss";
+import { Project, getAllProjects } from "src/api/ProjectAPI";
+import { ToastContainer, toast } from 'react-toastify';
 export default class home extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
+    this.state = {
+      projects:[]
+    }
+  }
+
+  componentDidMount() {
+    getAllProjects().then(res => {
+      console.log(res);
+      this.setState({ projects: res.data });
+    }).catch(error => toast.warn(error.response.data));
   }
 
   render() {
+    // console.log(this.state.projects[2]);
+    const AllProjects = this.state.projects.map(project => {
+      return (
+        <ProjectInfo project={project} key={project.id}/>
+      );
+    });
     // TODO: get user and project data from server and add skill of project
     return (
       <div>
@@ -47,19 +65,20 @@ export default class home extends Component<Props, State> {
               </div>
             </div>
             <div className="projects">
-              <ProjectInfo></ProjectInfo>
-              <ProjectInfo></ProjectInfo>
-              <ProjectInfo></ProjectInfo>
+              {AllProjects}
             </div>
 
           </div>
 
         </main>
         <Footer />
+        <ToastContainer />
       </div>
     )
   }
 }
 
 interface Props { }
-interface State { }
+interface State {
+  projects: Project[];
+}

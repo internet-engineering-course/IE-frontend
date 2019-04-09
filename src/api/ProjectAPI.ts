@@ -2,7 +2,11 @@ import API from "./API";
 import { Skill } from "./SkillAPI";
 
 export const getProject = (projectId: number) => {
-	return API.get("project/" + projectId);
+	return API.get("/project/" + projectId);
+};
+
+export const getAllProjects = () => {
+	return API.get("/project");
 };
 
 export interface Project{

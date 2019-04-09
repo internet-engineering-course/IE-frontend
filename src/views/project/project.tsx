@@ -51,7 +51,7 @@ export default class project extends Component<Props, State> {
     }
 
     render() {
-        console.log(this.state.project.skills);
+
         const timeToDeadline = new Date(Date.now() - this.state.project.deadline);
 
         const skillBoxes = this.state.project.skills.map(skill => {
