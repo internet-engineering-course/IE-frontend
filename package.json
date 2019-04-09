@@ -8,14 +8,17 @@
     "@types/react": "16.8.7",
     "@types/react-dom": "16.8.2",
     "@types/react-router-dom": "^4.3.1",
+    "@types/react-toastify": "^4.0.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "node-sass": "^4.11.0",
     "popper": "^1.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-notifications": "^1.4.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
+    "react-toastify": "^5.0.0",
     "typescript": "3.3.3333"
   },
   "scripts": {

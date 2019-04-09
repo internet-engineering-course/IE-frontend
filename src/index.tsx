@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "src/resources/fonts/iransans-fonts/fonts.css";
 import "src/resources/my-icons-collection/font/flaticon.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 import Home from "src/views/home/home";
 import Profile from "src/views/profile/Profile";

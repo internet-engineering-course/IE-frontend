@@ -5,6 +5,8 @@ import Bar from "src/views/common/bar/Bar";
 import SkillBox, { SkillBoxType } from "src/views/common/SkillBox";
 import SelectInput from "src/views/common/input/SelectInput";
 import ProfilePhoto from "src/resources/img/profile.jpg";
+import { ToastContainer, toast } from 'react-toastify';
+
 import "./Profile.scss";
 import { DEFAULT_USER_ID } from "src/constants/constants.ts";
 import { getAllSkills, Skill, EndorsableSkill } from "src/api/SkillAPI";
@@ -16,6 +18,7 @@ import {
 	endorseUserSkill,
 	User
 } from "src/api/UserAPI";
+import { render } from "react-dom";
 
 export default class Profile extends Component<Props, State> {
 	constructor(props: Props) {
@@ -49,7 +52,7 @@ export default class Profile extends Component<Props, State> {
 			.then(res => {
 				this.setState({ user: res.data });
 			})
-			.catch(error => console.error(error));
+			.catch(error => toast.warn(error.response.data));
 
 		getAllSkills()
 			.then(res => {
@@ -58,13 +61,13 @@ export default class Profile extends Component<Props, State> {
 				});
 				this.setState({ skillSelectOptions: allSkills });
 			})
-			.catch(error => console.error(error));
+			.catch(error => toast.warn(error.response.data));
 
 		getEndorsableSkills(params.userId)
 			.then(res => {
 				this.setState({ endorsableSkills: res.data });
 			})
-			.catch(error => console.error(error));
+			.catch(error => toast.warn(error.response.data));
 	}
 
 	submitAddSkill = (skillName: string) => {
@@ -72,9 +75,9 @@ export default class Profile extends Component<Props, State> {
 			.then(res => {
 				this.setState({ user: res.data });
 			})
-			.catch(error => console.error(error));
+			.catch(error => toast.warn(error.response.data));
 	};
-
+	
 	render() {
 		const { user } = this.state;
 		const loadSelfPage: boolean = DEFAULT_USER_ID == user.id;
@@ -173,10 +176,13 @@ export default class Profile extends Component<Props, State> {
 								{skillBoxes}
 							</div>
 						</div>
+						
 					</section>
 				</main>
 				<Footer />
+				<ToastContainer/>
 			</div>
+			
 		);
 	}
 }
