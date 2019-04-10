@@ -3,7 +3,8 @@ import "src/scss/style.scss";
 import "src/views/home/ProjectInfo.scss";
 import SkillBox, { SkillBoxType } from "src/views/common/SkillBox";
 import { Project } from 'src/api/ProjectAPI';
-
+import { ToPersian } from "src/utils/converNumberToPersian.ts";
+import { ToTimeShort } from "src/utils/converToTime";
 
 export default class ProjectInfo extends Component<Props, State> {
     constructor(props: Props) {
@@ -11,8 +12,29 @@ export default class ProjectInfo extends Component<Props, State> {
     }
 
     render() {
-        const timeToDeadline = new Date(this.props.project.deadline - Date.now());
-        
+        var timeToDeadline:Date = new Date();
+        var deadlineIsReceived: boolean = false;
+        if (this.props.project.deadline - Date.now() > 0) {
+            timeToDeadline = new Date(this.props.project.deadline - Date.now());
+        } else {
+            deadlineIsReceived = true;
+        }
+        var timeArea = null;
+
+        if (deadlineIsReceived) {
+            timeArea = (
+                <p className="time time-background">
+                    مهلت تمام شده
+                </p>
+            );
+        } else {
+            timeArea = (
+                <p className="time">
+                    زمان باقی مانده:{ToTimeShort(timeToDeadline)}
+                </p>
+            );
+        }
+
         const skillBoxes = this.props.project.skills.map(skill => {
             skill.type = SkillBoxType.None;
             return (
@@ -31,9 +53,7 @@ export default class ProjectInfo extends Component<Props, State> {
                 <div className="col-10 p-0 pr-3">
                     <div className="row m-0">
                         <h5 className="title m-0">{this.props.project.title}</h5>
-                        <p className="time">
-                            زمان باقی مانده: {timeToDeadline.getDay()}:{timeToDeadline.getHours()}:{timeToDeadline.getMinutes()}
-                        </p>
+                        {timeArea}
                     </div>
                     <p className="description mb-0">{this.props.project.description}</p>
                     <p className="blue budget my-1"><b>بودجه: {this.props.project.budget} تومان</b></p>

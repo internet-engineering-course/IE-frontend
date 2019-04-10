@@ -25,9 +25,8 @@ export default class Flaction extends Component<Props, State> {
             <div className={this.props.flacColor}>
                 <ul className="unorder-list">
                     <li><i className={this.props.flacType}></i></li>
-                    <li>
-                        {textArea}
-                    </li>
+                    <li>{textArea}</li>
+                    <li className="flaction-text-margin mb-0 mr-0">{this.props.children}</li>
                 </ul>
             </div>
         )

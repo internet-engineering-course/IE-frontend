@@ -6,6 +6,8 @@ import SkillBox, { SkillBoxType } from "src/views/common/SkillBox";
 import 'src/scss/style.scss';
 import 'src/views/project/project.scss';
 import { ToastContainer, toast } from 'react-toastify';
+import {ToPersian} from "src/utils/converNumberToPersian.ts";
+import {ToTimeComplete} from "src/utils/converToTime.ts";
 import axios from 'axios';
 import {
     Project,
@@ -80,7 +82,6 @@ export default class project extends Component<Props, State> {
 
     render() {
         
-
         const skillBoxes = this.state.project.skills.map(skill => {
             skill.type = SkillBoxType.Simple;
             return (
@@ -133,9 +134,12 @@ export default class project extends Component<Props, State> {
                                 <h2>{this.state.project.title}</h2>
                                 <div className="my-3">
                                     {/* TODO: edit flaction to work with deadlines */}
-                                    <Flaction flacColor={"gray"} bold={true} flacType={"flaticon-deadline"} text={"زمان باقی‌مانده: " + this.state.timeToDeadline.getDay() + " روز " + this.state.timeToDeadline.getHours() + " ساعت " + this.state.timeToDeadline.getMinutes() + " دقیقه " + this.state.timeToDeadline.getSeconds() + " ثانیه "}></Flaction>
+                                    <Flaction flacColor={"gray"} bold={true} flacType={"flaticon-deadline"} 
+                                    text={"زمان باقی‌مانده: "}> 
+                                    {ToTimeComplete(this.state.timeToDeadline)}
+                                    </Flaction>
                                     {/* <Flaction flacColor={"red"} bold={true} flacType={"flaticon-deadline"} text={"مهلت تمام شده"}></Flaction> */}
-                                    <Flaction flacColor={"blue"} bold={true} flacType={"flaticon-money-bag"} text={"بودجه:" + this.state.project.budget + " تومان"}></Flaction>
+                                    <Flaction flacColor={"blue"} bold={true} flacType={"flaticon-money-bag"} text={"بودجه: " + ToPersian(this.state.project.budget) + " تومان"}></Flaction>
                                     {/* <Flaction flacColor={"green"} bold={true} flacType={"flaticon-check-mark"} text={"برنده: وحید محمدی"}></Flaction> */}
                                 </div>
                                 <div className="my-3">
@@ -165,7 +169,7 @@ export default class project extends Component<Props, State> {
                         </div>
                     </div>
                     <div className="container bid-container py-4">
-                        {/* TODO: chech user is bid or not and send bid to server */}
+                        
                         {bidContainer}
                         {/* <Flaction flacColor={"red"} bold={false} flacType={"flaticon-danger"} text={ "مهلت ارسال پیشنهاد برای این پروژه به پایان رسیده است!"}></Flaction> */}
                     </div>

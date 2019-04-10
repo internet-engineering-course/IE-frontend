@@ -29,14 +29,23 @@
 }
 
 .time{
+    border-radius:2px;
     background-color: #F5F5F5;
     padding: 0.2em 0.2em;
     font-size: 12px;
     margin-left: 2em;
     text-align: center;
     color: #7F7F7F;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    -ms-border-radius:2px;
+    -o-border-radius:2px;
 }
 
+.time-background{
+    background-color: #3E8788;
+    color: white;
+}
 .title{
     flex-grow: 1;
 }
