@@ -6,14 +6,15 @@ import SkillBox, { SkillBoxType } from "src/views/common/SkillBox";
 import 'src/scss/style.scss';
 import 'src/views/project/project.scss';
 import { ToastContainer, toast } from 'react-toastify';
-import {ToPersian} from "src/utils/converNumberToPersian.ts";
-import {ToTimeComplete} from "src/utils/converToTime.ts";
+import { ToPersian } from "src/utils/converNumberToPersian.ts";
+import { ToTimeComplete } from "src/utils/converToTime.ts";
 import axios from 'axios';
 import {
     Project,
     getProject,
     bidProject,
-    isBidBefore
+    isBidBefore,
+    getProjectWinner
 } from 'src/api/ProjectAPI';
 import Flaction from './Flaction';
 
@@ -25,22 +26,21 @@ export default class project extends Component<Props, State> {
         this.state = {
             bidAmount: -1,
             isBid: false,
-            timeToDeadline: new Date(),
+            winnerUser: "",
             project: {
                 id: "untitled",
                 title: "untitled",
                 description: "untitled",
                 imageUrl: "untitled",
                 budget: 0,
-                deadline: 0,
+                deadline: 100000000000000,
                 skills: [
                     {
                         name: "untitled",
                         point: 0
                     }
                 ]
-            },
-            error: ""
+            }
         }
     }
 
@@ -52,14 +52,13 @@ export default class project extends Component<Props, State> {
         getProject(params.projectId)
             .then(res => {
                 this.setState({ project: res.data });
-                this.setState({timeToDeadline: new Date(this.state.project.deadline - Date.now())})
             })
             .catch(error => toast.warn(error.response.data));
 
         isBidBefore(params.projectId)
-            .then(res =>{
-                if(res.data == true){
-                    this.setState({isBid:true});
+            .then(res => {
+                if (res.data == true) {
+                    this.setState({ isBid: true });
                 }
             })
             .catch(error => toast.warn(error.response.data));
@@ -81,7 +80,15 @@ export default class project extends Component<Props, State> {
     };
 
     render() {
-        
+
+        var timeToDeadline: Date = new Date();
+        var deadlineIsReceived: boolean = false;
+        if (this.state.project.deadline - Date.now() > 0) {
+            timeToDeadline = new Date(this.state.project.deadline - Date.now());
+        } else {
+            deadlineIsReceived = true;
+        }
+
         const skillBoxes = this.state.project.skills.map(skill => {
             skill.type = SkillBoxType.Simple;
             return (
@@ -93,7 +100,19 @@ export default class project extends Component<Props, State> {
         });
 
         var bidContainer = null;
-        if (!this.state.isBid) {
+        if (deadlineIsReceived) {
+            bidContainer = (
+                <div>
+                    <Flaction flacColor={"red"} bold={false} flacType={"flaticon-danger"} text={"مهلت ارسال پیشنهاد برای این پروژه به پایان رسیده است!"}></Flaction>
+                </div>
+            );
+        } else if (this.state.isBid) {
+            bidContainer = (
+                <div>
+                    <Flaction flacColor={"green"} bold={false} flacType={"flaticon-check-mark"} text={"شما قبلا پیشنهاد خود را ثبت کرده‌اید."}></Flaction>
+                </div>
+            );
+        } else {
             bidContainer = (
                 <div>
                     <div className="row mx-3">
@@ -112,10 +131,31 @@ export default class project extends Component<Props, State> {
                     </div>
                 </div>
             );
-        } else {
-            bidContainer = (
+        }
+
+        var flactionArea = null;
+        if (deadlineIsReceived) {
+            getProjectWinner(this.state.project.id)
+                .then(res => {
+                    var data = res.data;
+                    this.setState({ winnerUser: data.firstname + data.lastname});
+                })
+                .catch(error => toast.warn(error.response.data));
+            flactionArea = (
                 <div>
-                    <Flaction flacColor={"green"} bold={false} flacType={"flaticon-check-mark"} text={ "شما قبلا پیشنهاد خود را ثبت کرده‌اید."}></Flaction>
+                    <Flaction flacColor={"red"} bold={true} flacType={"flaticon-deadline"} text={"مهلت تمام شده"}></Flaction>
+                    <Flaction flacColor={"blue"} bold={true} flacType={"flaticon-money-bag"} text={"بودجه: " + ToPersian(this.state.project.budget) + " تومان"}></Flaction>
+                    <Flaction flacColor={"green"} bold={true} flacType={"flaticon-check-mark"} text={"برنده: "+ (this.state.winnerUser==""? " ندارد":this.state.winnerUser)}></Flaction>
+                </div>
+            );
+        } else {
+            flactionArea = (
+                <div>
+                    <Flaction flacColor={"gray"} bold={true} flacType={"flaticon-deadline"}
+                        text={"زمان باقی‌مانده: "}>
+                        {ToTimeComplete(timeToDeadline)}
+                    </Flaction>
+                    <Flaction flacColor={"blue"} bold={true} flacType={"flaticon-money-bag"} text={"بودجه: " + ToPersian(this.state.project.budget) + " تومان"}></Flaction>
                 </div>
             );
         }
@@ -133,14 +173,7 @@ export default class project extends Component<Props, State> {
                             <div className="col-md-9 text-margin">
                                 <h2>{this.state.project.title}</h2>
                                 <div className="my-3">
-                                    {/* TODO: edit flaction to work with deadlines */}
-                                    <Flaction flacColor={"gray"} bold={true} flacType={"flaticon-deadline"} 
-                                    text={"زمان باقی‌مانده: "}> 
-                                    {ToTimeComplete(this.state.timeToDeadline)}
-                                    </Flaction>
-                                    {/* <Flaction flacColor={"red"} bold={true} flacType={"flaticon-deadline"} text={"مهلت تمام شده"}></Flaction> */}
-                                    <Flaction flacColor={"blue"} bold={true} flacType={"flaticon-money-bag"} text={"بودجه: " + ToPersian(this.state.project.budget) + " تومان"}></Flaction>
-                                    {/* <Flaction flacColor={"green"} bold={true} flacType={"flaticon-check-mark"} text={"برنده: وحید محمدی"}></Flaction> */}
+                                    {flactionArea}
                                 </div>
                                 <div className="my-3">
                                     <h5>توضیحات</h5>
@@ -169,9 +202,7 @@ export default class project extends Component<Props, State> {
                         </div>
                     </div>
                     <div className="container bid-container py-4">
-                        
                         {bidContainer}
-                        {/* <Flaction flacColor={"red"} bold={false} flacType={"flaticon-danger"} text={ "مهلت ارسال پیشنهاد برای این پروژه به پایان رسیده است!"}></Flaction> */}
                     </div>
                 </main>
                 <Footer />
@@ -186,8 +217,7 @@ interface Props {
 };
 interface State {
     project: Project;
-    error: string;
     bidAmount: number;
     isBid: boolean;
-    timeToDeadline: Date;
+    winnerUser: string;
 };

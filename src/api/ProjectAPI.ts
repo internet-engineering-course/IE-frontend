@@ -16,6 +16,11 @@ export const bidProject = (projectId:string , bidAmount:number) =>{
 export const isBidBefore = (projectId:string) =>{
     return API.get("/project/" + projectId + "/bid");
 }
+
+export const getProjectWinner = (projectId:string) =>{
+    return API.get("/project/" + projectId + "/auction");
+}
+
 export interface Project{
     id: string,
     title: string,
