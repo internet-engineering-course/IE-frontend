@@ -1,6 +1,10 @@
 import API from "./API";
 import { Skill } from "./SkillAPI";
 
+export const getAllUser = () =>{
+	return API.get("/user");
+};
+
 export const getUser = (userId: number) => {
 	return API.get("/user/" + userId);
 };

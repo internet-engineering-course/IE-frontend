@@ -1,7 +1,7 @@
 import API from "./API";
 import { Skill } from "./SkillAPI";
 
-export const getProject = (projectId: number) => {
+export const getProject = (projectId: string) => {
 	return API.get("/project/" + projectId);
 };
 

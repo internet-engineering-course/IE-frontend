@@ -8,27 +8,44 @@ import UserInfo from "src/views/home/UserInfo.tsx";
 import "src/scss/style.scss";
 import "src/views/home/home.scss";
 import { Project, getAllProjects } from "src/api/ProjectAPI";
+import { User, getAllUser} from "src/api/UserAPI";
 import { ToastContainer, toast } from 'react-toastify';
+
+
 export default class home extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      projects:[]
+      projects:[],
+      users:[]
     }
   }
 
   componentDidMount() {
     getAllProjects().then(res => {
-      console.log(res);
       this.setState({ projects: res.data });
+    }).catch(error => toast.warn(error.response.data));
+
+    getAllUser().then(res => {
+      this.setState({users:res.data})
     }).catch(error => toast.warn(error.response.data));
   }
 
   render() {
-    // console.log(this.state.projects[2]);
+
     const AllProjects = this.state.projects.map(project => {
       return (
-        <ProjectInfo project={project} key={project.id}/>
+        <ProjectInfo project={project} key={project.id} onProjectClick={()=>{
+          window.location.assign("/project/"+project.id);
+        }}/>
+      );
+    });
+
+    const AllUsers = this.state.users.map(user =>{
+      return(
+        <UserInfo user={user} key={user.id.toString()} onUserClick={()=>{
+          window.location.assign("/profile/"+user.id);
+        }}/>
       );
     });
     // TODO: get user and project data from server and add skill of project
@@ -58,18 +75,13 @@ export default class home extends Component<Props, State> {
                 <input className="user-search-input" type="search" placeholder="جستجو نام کاربر" />
               </div>
               <div>
-                <UserInfo></UserInfo>
-                <UserInfo></UserInfo>
-                <UserInfo></UserInfo>
-                <UserInfo></UserInfo>
+                {AllUsers}
               </div>
             </div>
             <div className="projects">
               {AllProjects}
             </div>
-
           </div>
-
         </main>
         <Footer />
         <ToastContainer />
@@ -81,4 +93,5 @@ export default class home extends Component<Props, State> {
 interface Props { }
 interface State {
   projects: Project[];
+  users: User[];
 }
