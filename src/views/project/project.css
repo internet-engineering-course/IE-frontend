@@ -10,8 +10,8 @@
 .project-image {
   margin: 30px 25px;
   border: 1px solid #f3f3f3;
-  max-height: 12em;
-  max-width: 12em;
+  max-height: auto;
+  max-width: 90%;
 }
 
 .text-margin {

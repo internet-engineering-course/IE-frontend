@@ -11,8 +11,8 @@ export default class ProjectInfo extends Component<Props, State> {
     }
 
     render() {
-        var timeToDeadline = new Date(Date.now() - this.props.project.deadline);
-
+        const timeToDeadline = new Date(this.props.project.deadline - Date.now());
+        
         const skillBoxes = this.props.project.skills.map(skill => {
             skill.type = SkillBoxType.None;
             return (

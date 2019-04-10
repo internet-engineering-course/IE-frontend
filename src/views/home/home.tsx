@@ -48,7 +48,6 @@ export default class home extends Component<Props, State> {
         }}/>
       );
     });
-    // TODO: get user and project data from server and add skill of project
     return (
       <div>
         <Header isUserLoggedIn={true} />

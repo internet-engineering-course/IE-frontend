@@ -9,6 +9,10 @@
     -o-border-radius: 5px;
 }
 
+.user:hover{
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 .user-image{
     display: inherit;
     margin-left: auto;
