@@ -131,7 +131,7 @@ export default class Register extends Component<State, Props> {
 										<div className="col-sm-4">
 											<button
 												type="submit"
-												className="signupbtn">
+												className="signupbtn register-button">
 												ثبت نام
 											</button>
 										</div>

@@ -10,7 +10,10 @@
 }
 
 .gray-background{
-	font-size: 100px;
+	background-color: #F9F9F9;
+	font-size: 12px;
+	color: #888888;
+	font-weight: 500;
 }
 
 .point-box {
