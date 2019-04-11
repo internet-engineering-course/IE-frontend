@@ -8,10 +8,16 @@
 }
 
 .project-image {
-  margin: 30px 25px;
+  display: inherit;
   border: 1px solid #f3f3f3;
-  max-height: auto;
-  max-width: 90%;
+  height: auto;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-area {
+  padding: 0.25em 0.25em;
 }
 
 .text-margin {
@@ -47,7 +53,7 @@
   border-bottom-right-radius: 5px;
 }
 
-input {
+.bid-input {
   border: none;
   height: 35px;
   padding-right: 5px;

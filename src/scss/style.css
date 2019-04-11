@@ -16,4 +16,17 @@ main {
 .make-ltr {
   direction: ltr;
 }
+
+.main-height {
+  min-height: calc(100vh - 60px - 65px);
+}
+
+.center-text {
+  text-align: center;
+}
+
+input {
+  border: none;
+  outline: none;
+}
 /*# sourceMappingURL=style.css.map */

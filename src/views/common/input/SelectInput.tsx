@@ -31,8 +31,8 @@ export default class SelectInput extends Component<Props, State> {
 			<div className="make-rtl mx-3 mb-3">
 				<div className="row">
 					<h4 className="px-3 py-2">{this.props.label}</h4>
-					<form onSubmit={this.submit}>
-						<select onChange={this.handleSelectOptionChange}>
+					<form onSubmit={this.submit} className="select-input-form">
+						<select onChange={this.handleSelectOptionChange} className="select-input-form-select">
 							<option value="0">
 								{this.props.defaultOption}
 							</option>

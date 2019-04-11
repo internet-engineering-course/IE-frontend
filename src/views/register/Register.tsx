@@ -18,7 +18,7 @@ export default class Register extends Component<State, Props> {
 					<div className="container h-100">
 						<div className="row justify-content-center align-items-center main-height">
 							<div className="col-md-9">
-								<form className="register-form py-2 px-5">
+								<form className="register-form">
 									<h1 className="center-text">ثبت نام</h1>
 									<hr />
 									<div className="row">

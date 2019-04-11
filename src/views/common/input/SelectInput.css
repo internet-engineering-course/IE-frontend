@@ -1,4 +1,4 @@
-form {
+.select-input-form {
 	overflow: hidden;
 	background-color: white;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
@@ -7,7 +7,7 @@ form {
 	width: 315px;
 }
 
-form select {
+.select-input-form-select {
 	background: transparent;
 	background-color: #F6F6F6;
 	border: solid;
