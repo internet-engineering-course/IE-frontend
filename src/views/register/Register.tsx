@@ -136,6 +136,10 @@ export default class Register extends Component<State, Props> {
 											</button>
 										</div>
 									</div>
+									<div className="center-text py-2">
+										قبلا ثبت نام کرده‌اید؟{" "}
+										<a href="/login">ورود</a>
+									</div>
 								</form>
 							</div>
 						</div>

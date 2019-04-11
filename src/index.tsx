@@ -6,12 +6,13 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "src/resources/fonts/iransans-fonts/fonts.css";
 import "src/resources/my-icons-collection/font/flaticon.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 import Home from "src/views/home/home";
 import Profile from "src/views/profile/Profile";
 import Project from "src/views/project/project";
 import Register from "src/views/register/Register";
+import Login from "src/views/login/Login";
 
 ReactDOM.render(
 	<Router>
@@ -20,6 +21,7 @@ ReactDOM.render(
 			<Route path="/profile/:userId" component={Profile} />
 			<Route path="/home" component={Home} />
 			<Route path="/register" component={Register} />
+			<Route path="/login" component={Login} />
 		</div>
 	</Router>,
 	document.getElementById("root")
