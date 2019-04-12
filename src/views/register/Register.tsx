@@ -2,7 +2,24 @@ import React, { Component } from "react";
 import Header from "src/views/common/Header";
 import Footer from "src/views/common/Footer";
 import "./Register.scss";
-export default class Register extends Component<State, Props> {
+import { toast, ToastContainer } from "react-toastify";
+export default class Register extends Component<Props, State> {
+	constructor(props: Props) {
+		super(props);
+		this.state = { password: "", password_confirm: "" };
+	}
+
+	handleInputChange = (event: any) => {
+		const target = event.target;
+		if (target.type === "password") {
+			const name = target.name;
+			const value = target.value;
+			this.setState({
+				[name]: value
+			} as any);
+		}
+	};
+
 	render() {
 		return (
 			<div>
@@ -18,7 +35,18 @@ export default class Register extends Component<State, Props> {
 					<div className="container h-100">
 						<div className="row justify-content-center align-items-center main-height">
 							<div className="col-md-9">
-								<form className="register-form py-3 px-5">
+								<form
+									className="register-form py-3 px-5"
+									onSubmit={event => {
+										event.preventDefault();
+										if (
+											this.state.password !=
+											this.state.password_confirm
+										)
+											toast.warn(
+												"Passwords don't match!"
+											);
+									}}>
 									<h1 className="center-text">ثبت نام</h1>
 									<hr />
 									<div className="row">
@@ -110,7 +138,10 @@ export default class Register extends Component<State, Props> {
 												type="password"
 												className="text-box"
 												placeholder="رمز وارد کنید"
-												name="pwd"
+												name="password"
+												onChange={
+													this.handleInputChange
+												}
 												required
 											/>
 										</div>
@@ -122,7 +153,10 @@ export default class Register extends Component<State, Props> {
 												type="password"
 												className="text-box"
 												placeholder="تکرار رمز وارد کنید"
-												name="pwd-repeat"
+												onChange={
+													this.handleInputChange
+												}
+												name="password_confirm"
 												required
 											/>
 										</div>
@@ -146,10 +180,14 @@ export default class Register extends Component<State, Props> {
 					</div>
 				</main>
 				<Footer />
+				<ToastContainer />
 			</div>
 		);
 	}
 }
 
-interface State {}
+interface State {
+	password: string;
+	password_confirm: string;
+}
 interface Props {}
