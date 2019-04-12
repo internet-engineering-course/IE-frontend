@@ -56,7 +56,7 @@ export default class ProjectInfo extends Component<Props, State> {
                         {timeArea}
                     </div>
                     <p className="description mb-0">{this.props.project.description}</p>
-                    <p className="blue budget my-1"><b>بودجه: {this.props.project.budget} تومان</b></p>
+                    <p className="blue budget my-1"><b>بودجه: {ToPersian(this.props.project.budget)} تومان</b></p>
                     <div className="row no-gutters">
                         <p className="my-1 skills-color">
                             مهارت‌ها:

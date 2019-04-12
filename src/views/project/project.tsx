@@ -64,10 +64,11 @@ export default class project extends Component<Props, State> {
 				if (this.state.isDeadLineReceived) {
 					getProjectWinner(this.state.project.id)
 						.then(res => {
-							var data = res.data;
-							this.setState({
-								winnerUser: data.firstname + data.lastname
-							});
+							if(res.data == ""){
+								this.setState({winnerUser:""});
+							}else{
+								this.setState({winnerUser:res.data.firstname+res.data.lastname});
+							}
 						})
 						.catch(error => toast.warn(error.response.data));
 				}
@@ -76,7 +77,8 @@ export default class project extends Component<Props, State> {
 
 		isBidBefore(params.projectId)
 			.then(res => {
-				if (res.data == true) {
+				var bidAmount = res.data;
+				if (bidAmount.bidAmount != -1) {
 					this.setState({ isBid: true });
 				}
 			})
@@ -192,9 +194,9 @@ export default class project extends Component<Props, State> {
 						flacType={"flaticon-check-mark"}
 						text={
 							"برنده: " +
-							(this.state.winnerUser == ""
-								? " ندارد"
-								: this.state.winnerUser)
+							(this.state.winnerUser == ""?
+								" ندارد": 
+								this.state.winnerUser)
 						}
 					/>
 				</div>

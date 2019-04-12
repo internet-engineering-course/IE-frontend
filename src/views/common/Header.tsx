@@ -27,7 +27,7 @@ export default class Header extends Component<Props, State> {
 					<div className="container header-hover">
 						<div className="row justify-content-between align-items-center">
 							<div id="logo" className="col-auto">
-								{/* <a href="/register"><img src={logoUrl} alt="jobonja-logo" /></a> */}
+								<a href="/login"><img src={logoUrl} alt="jobonja-logo" /></a>
 							</div>
 						</div>
 					</div>
@@ -52,7 +52,7 @@ export default class Header extends Component<Props, State> {
 										className="col-auto profile-link">
 										حساب کاربری
 									</a>
-									<div className="col-auto">خروج</div>
+									<a className="profile-link" href="/login"><div className="col-auto">خروج</div></a>
 								</div>
 							</nav>
 						</div>
