@@ -22,7 +22,8 @@ export default class home extends Component<Props, State> {
       pageNumber: 0,
       pageSize: 3,
       projectSearchText: "",
-      userSearchText:""
+      userSearchText:"",
+      loadMoreVisibility:true
     }
   }
 
@@ -58,7 +59,8 @@ export default class home extends Component<Props, State> {
   projectSearch() {
     searchProject(this.state.projectSearchText).then(res => {
       this.setState({
-        projects:res.data
+        projects:res.data,
+        loadMoreVisibility:false
       })
     }).catch(error => toast.warn(error.response.data));
   }
@@ -82,7 +84,18 @@ export default class home extends Component<Props, State> {
   }
 
   render() {
-
+    var LoadMore;
+    if(this.state.loadMoreVisibility){
+      LoadMore = (<div className="row justify-content-center">
+      <div className="col-sm-2 visibility">
+        <button type="submit" onClick={this.loadMore} className="loadMoreBtn">
+          نمایش بیشتر
+      </button>
+      </div>
+    </div>);
+    }else{
+      LoadMore ="";
+    }
 
     const AllProjects = this.state.projects.map(project => {
       return (
@@ -133,13 +146,7 @@ export default class home extends Component<Props, State> {
               {AllProjects}
             </div>
           </div>
-          <div className="row justify-content-center">
-            <div className="col-sm-2 visibility">
-              <button type="submit" onClick={this.loadMore} className="loadMoreBtn">
-                نمایش بیشتر
-						</button>
-            </div>
-          </div>
+          {LoadMore}
         </main>
         <Footer />
         <ToastContainer />
@@ -156,4 +163,5 @@ interface State {
   pageNumber: number;
   projectSearchText: string;
   userSearchText: string;
+  loadMoreVisibility: boolean;
 }
