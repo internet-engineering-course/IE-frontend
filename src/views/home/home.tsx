@@ -7,9 +7,10 @@ import ProjectInfo from "src/views/home/ProjectInfo.tsx";
 import UserInfo from "src/views/home/UserInfo.tsx";
 import "src/scss/style.scss";
 import "src/views/home/home.scss";
-import { Project, getAllProjects } from "src/api/ProjectAPI";
+import { Project, getAllProjects, searchProject } from "src/api/ProjectAPI";
 import { User, getAllUser } from "src/api/UserAPI";
 import { ToastContainer, toast } from 'react-toastify';
+import { array } from 'prop-types';
 
 
 export default class home extends Component<Props, State> {
@@ -19,33 +20,56 @@ export default class home extends Component<Props, State> {
       projects: [],
       users: [],
       pageNumber: 0,
-      pageSize: 3
+      pageSize: 3,
+      projectSearchText: ""
     }
   }
 
   componentDidMount() {
     getAllProjects(this.state.pageSize, this.state.pageNumber).then(res => {
-      this.setState({pageNumber:this.state.pageNumber+1});
+      this.setState({ pageNumber: this.state.pageNumber + 1 });
       this.setState({ projects: res.data });
     }).catch(error => toast.warn(error.response.data));
 
     getAllUser().then(res => {
       this.setState({ users: res.data })
     }).catch(error => toast.warn(error.response.data));
-    
+
     this.loadMore = this.loadMore.bind(this);
+    this.projectSearch = this.projectSearch.bind(this);
+    this.updateInputValue = this.updateInputValue.bind(this);
   }
 
-  loadMore(){
-    this.setState({pageNumber:this.state.pageNumber+1});
+  loadMore() {
+    this.setState({ pageNumber: this.state.pageNumber + 1 });
     getAllProjects(this.state.pageSize, this.state.pageNumber).then(res => {
+      if(res.data.length == 0){
+       
+        toast.warn("No more project");
+      }
       this.setState({
         projects: [...this.state.projects, ...res.data]
       });
     }).catch(error => toast.warn(error.response.data));
   }
 
+  projectSearch() {
+    searchProject(this.state.projectSearchText).then(res => {
+      this.setState({
+        projects:res.data
+      })
+    }).catch(error => toast.warn(error.response.data));
+  }
+
+  updateInputValue(evt:any) {
+    this.setState({
+      projectSearchText: evt.target.value
+    });
+  }
+
+
   render() {
+
 
     const AllProjects = this.state.projects.map(project => {
       return (
@@ -78,8 +102,8 @@ export default class home extends Component<Props, State> {
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
               </div>
               <div className="row search">
-                <input className="search-input" type="search" placeholder="جستجو در جاب‌اونجا" />
-                <button type="submit" className="search-button">جستجو</button>
+                <input onChange={evt => this.updateInputValue(evt)} className="search-input" type="search" placeholder="جستجو در جاب‌اونجا" />
+                <button type="submit" className="search-button" onClick={this.projectSearch}>جستجو</button>
               </div>
             </div>
           </Bar>
@@ -117,4 +141,5 @@ interface State {
   users: User[];
   pageSize: number;
   pageNumber: number;
+  projectSearchText: string;
 }
