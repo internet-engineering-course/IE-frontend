@@ -9,9 +9,7 @@
 }
 
 .users {
-  -ms-flex-negative: 4;
-      flex-shrink: 4;
-  margin: -2em 0 0 1em;
+  margin: -2em 0;
 }
 
 .user-search {

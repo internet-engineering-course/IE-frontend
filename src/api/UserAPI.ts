@@ -25,6 +25,10 @@ export const endorseUserSkill = (skillName: string, userId: number) => {
 	return API.post("user/" + userId + "/endorse", { skillName: skillName });
 };
 
+export const searchUser = (filter:string) => {
+    return API.get("/user/search?filter="+filter);
+}
+
 export interface User {
 	id: number;
 	username: string;

@@ -8,7 +8,7 @@ import UserInfo from "src/views/home/UserInfo.tsx";
 import "src/scss/style.scss";
 import "src/views/home/home.scss";
 import { Project, getAllProjects, searchProject } from "src/api/ProjectAPI";
-import { User, getAllUser } from "src/api/UserAPI";
+import { User, getAllUser, searchUser } from "src/api/UserAPI";
 import { ToastContainer, toast } from 'react-toastify';
 import { array } from 'prop-types';
 
@@ -21,7 +21,8 @@ export default class home extends Component<Props, State> {
       users: [],
       pageNumber: 0,
       pageSize: 3,
-      projectSearchText: ""
+      projectSearchText: "",
+      userSearchText:""
     }
   }
 
@@ -37,7 +38,8 @@ export default class home extends Component<Props, State> {
 
     this.loadMore = this.loadMore.bind(this);
     this.projectSearch = this.projectSearch.bind(this);
-    this.updateInputValue = this.updateInputValue.bind(this);
+    this.updateProjectInputValue = this.updateProjectInputValue.bind(this);
+    this.userSearch = this.userSearch.bind(this);
   }
 
   loadMore() {
@@ -61,12 +63,23 @@ export default class home extends Component<Props, State> {
     }).catch(error => toast.warn(error.response.data));
   }
 
-  updateInputValue(evt:any) {
+  userSearch(evt:any) {
+    this.setState({
+      userSearchText: evt.target.value
+    });
+
+    searchUser(this.state.userSearchText).then(res => {
+      this.setState({
+        users:res.data
+      })
+    }).catch(error => toast.warn(error.response.data));
+  }
+
+  updateProjectInputValue(evt:any) {
     this.setState({
       projectSearchText: evt.target.value
     });
   }
-
 
   render() {
 
@@ -102,15 +115,15 @@ export default class home extends Component<Props, State> {
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
               </div>
               <div className="row search">
-                <input onChange={evt => this.updateInputValue(evt)} className="search-input" type="search" placeholder="جستجو در جاب‌اونجا" />
+                <input onChange={evt => this.updateProjectInputValue(evt)} className="search-input" type="search" placeholder="جستجو در جاب‌اونجا" />
                 <button type="submit" className="search-button" onClick={this.projectSearch}>جستجو</button>
               </div>
             </div>
           </Bar>
           <div className="container main">
-            <div className="users">
+            <div className="users col-3">
               <div className="user-search">
-                <input className="user-search-input" type="search" placeholder="جستجو نام کاربر" />
+                <input onChange={evt => this.userSearch(evt) }  className="user-search-input" type="search" placeholder="جستجو نام کاربر" />
               </div>
               <div>
                 {AllUsers}
@@ -142,4 +155,5 @@ interface State {
   pageSize: number;
   pageNumber: number;
   projectSearchText: string;
+  userSearchText: string;
 }

@@ -20,7 +20,7 @@ export default class UserInfo extends Component<Props, State> {
                        {this.props.user.firstname + this.props.user.lastname}
                     </p>
                     <p className="title-color m-0">
-                        گیک
+                        {this.props.user.jobTitle}
                     </p>
                 </div>
 
