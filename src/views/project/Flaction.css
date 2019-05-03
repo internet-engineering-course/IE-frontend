@@ -31,4 +31,8 @@
 .gray {
   color: #767676;
 }
+
+ul li.flaction-text-margin {
+  margin-top: 7px;
+}
 /*# sourceMappingURL=Flaction.css.map */

@@ -8,7 +8,7 @@ import UserInfo from "src/views/home/UserInfo.tsx";
 import "src/scss/style.scss";
 import "src/views/home/home.scss";
 import { Project, getAllProjects } from "src/api/ProjectAPI";
-import { User, getAllUser} from "src/api/UserAPI";
+import { User, getAllUser } from "src/api/UserAPI";
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -16,18 +16,32 @@ export default class home extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      projects:[],
-      users:[]
+      projects: [],
+      users: [],
+      pageNumber: 0,
+      pageSize: 3
     }
   }
 
   componentDidMount() {
-    getAllProjects().then(res => {
+    getAllProjects(this.state.pageSize, this.state.pageNumber).then(res => {
+      this.setState({pageNumber:this.state.pageNumber+1});
       this.setState({ projects: res.data });
     }).catch(error => toast.warn(error.response.data));
 
     getAllUser().then(res => {
-      this.setState({users:res.data})
+      this.setState({ users: res.data })
+    }).catch(error => toast.warn(error.response.data));
+    
+    this.loadMore = this.loadMore.bind(this);
+  }
+
+  loadMore(){
+    this.setState({pageNumber:this.state.pageNumber+1});
+    getAllProjects(this.state.pageSize, this.state.pageNumber).then(res => {
+      this.setState({
+        projects: [...this.state.projects, ...res.data]
+      });
     }).catch(error => toast.warn(error.response.data));
   }
 
@@ -35,19 +49,20 @@ export default class home extends Component<Props, State> {
 
     const AllProjects = this.state.projects.map(project => {
       return (
-        <ProjectInfo project={project} key={project.id} onProjectClick={()=>{
-          window.location.assign("/project/"+project.id);
-        }}/>
+        <ProjectInfo project={project} key={project.id} onProjectClick={() => {
+          window.location.assign("/project/" + project.id);
+        }} />
       );
     });
 
-    const AllUsers = this.state.users.map(user =>{
-      return(
-        <UserInfo user={user} key={user.id.toString()} onUserClick={()=>{
-          window.location.assign("/profile/"+user.id);
-        }}/>
+    const AllUsers = this.state.users.map(user => {
+      return (
+        <UserInfo user={user} key={user.id.toString()} onUserClick={() => {
+          window.location.assign("/profile/" + user.id);
+        }} />
       );
     });
+
     return (
       <div>
         <Header isUserLoggedIn={true} />
@@ -81,6 +96,13 @@ export default class home extends Component<Props, State> {
               {AllProjects}
             </div>
           </div>
+          <div className="row justify-content-center">
+            <div className="col-sm-2 visibility">
+              <button type="submit" onClick={this.loadMore} className="loadMoreBtn">
+                نمایش بیشتر
+						</button>
+            </div>
+          </div>
         </main>
         <Footer />
         <ToastContainer />
@@ -93,4 +115,6 @@ interface Props { }
 interface State {
   projects: Project[];
   users: User[];
+  pageSize: number;
+  pageNumber: number;
 }

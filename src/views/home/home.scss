@@ -29,3 +29,23 @@
 	vertical-align: center;
   background-color: unset;
 }
+
+.loadMoreBtn{
+  display: flex;
+  border: 0;
+  margin: 1em auto;
+  padding: .5em 1em;
+  transform:translate(-100%,0);
+  font-size: 1em;
+  background-color: #00AEBF;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transform:translate(-100%,0);
+  -moz-transform:translate(-100%,0);
+  -ms-transform:translate(-100%,0);
+  -o-transform:translate(-100%,0);
+}
+
+.loadMoreBtn:hover{
+  background: #027883;
+}

@@ -5,8 +5,8 @@ export const getProject = (projectId: string) => {
 	return API.get("/project/" + projectId);
 };
 
-export const getAllProjects = () => {
-	return API.get("/project");
+export const getAllProjects = (pageSize:number , pageNumber:number) => {
+	return API.get("/project?pageSize=" + pageSize + "&pageNumber=" + pageNumber);
 };
 
 export const bidProject = (projectId:string , bidAmount:number) =>{

@@ -9,6 +9,12 @@
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  cursor: pointer;
+}
+
+.project:hover {
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .image {
@@ -21,20 +27,31 @@
 }
 
 .description {
-  font-weight: 100;
+  font-size: 12px;
   padding-left: 3em;
 }
 
 .time {
+  border-radius: 2px;
   background-color: #F5F5F5;
   padding: 0.2em 0.2em;
   font-size: 12px;
   margin-left: 2em;
   text-align: center;
   color: #7F7F7F;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
+
+.time-background {
+  background-color: #3E8788;
+  color: white;
 }
 
 .title {
+  font-size: 1em;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -44,5 +61,10 @@
   color: #ABABAB;
   font-weight: 400;
   font-size: 0.9em;
+}
+
+.budget {
+  font-weight: 400;
+  font-size: 14px;
 }
 /*# sourceMappingURL=ProjectInfo.css.map */
