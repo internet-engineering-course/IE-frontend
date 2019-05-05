@@ -67,7 +67,7 @@ export default class project extends Component<Props, State> {
 							if(res.data == ""){
 								this.setState({winnerUser:""});
 							}else{
-								this.setState({winnerUser:res.data.firstname+res.data.lastname});
+								this.setState({winnerUser:res.data.firstname+" "+res.data.lastname});
 							}
 						})
 						.catch(error => toast.warn(error.response.data));

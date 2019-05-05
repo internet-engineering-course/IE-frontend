@@ -21,8 +21,8 @@ export const getProjectWinner = (projectId:string) =>{
     return API.get("/project/" + projectId + "/auction");
 }
 
-export const searchProject =(filter:string)=>{
-    return API.get("/project/search?filter="+filter);
+export const searchProject =(filter:string, pageSize:number, pageNumber:number)=>{
+    return API.get("/project/search?filter=" + filter + "&pageSize=" + pageSize + "&pageNumber=" + pageNumber);
 }
 
 export interface Project{
