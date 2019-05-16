@@ -1,4 +1,5 @@
 import API from "./API";
+import axios from "axios";
 import { Skill } from "./SkillAPI";
 
 export const getProject = (projectId: string) => {

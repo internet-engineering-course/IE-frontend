@@ -25,9 +25,11 @@ export default class Login extends Component<Props, State> {
 	login = (event: any) =>{
 		event.preventDefault();
 		login(this.state.username, this.state.password)
-		.then()
+		.then( res =>{
+			localStorage.setItem("token" , res.data.token);
+		}
+		)
 		.catch(error => toast.warn(error.response.data));
-		console.log("asda")
 	}
 
 	render() {
