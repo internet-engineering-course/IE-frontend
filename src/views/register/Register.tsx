@@ -27,7 +27,6 @@ export default class Register extends Component<Props, State> {
 		this.setState({
 			[name]: value
 		} as any);
-		console.log(name , value)
 	};
 
 	checkPassword = (event: any) =>{

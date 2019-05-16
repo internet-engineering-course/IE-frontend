@@ -1,8 +1,35 @@
 import React, { Component } from "react";
 import Header from "src/views/common/Header";
 import Footer from "src/views/common/Footer";
+import {login} from "src/api/AuthAPI"
+import { toast, ToastContainer } from "react-toastify";
 
-export default class Login extends Component<State, Props> {
+export default class Login extends Component<Props, State> {
+	constructor(props: Props) {
+		super(props);
+		this.state = { 
+			password: "",
+			username: ""
+		}
+	}
+
+	handleInputChange = (event: any) => {
+		const target = event.target;
+		const name = target.name;
+		const value = target.value;
+		this.setState({
+			[name]: value
+		} as any);
+	};
+	
+	login = (event: any) =>{
+		event.preventDefault();
+		login(this.state.username, this.state.password)
+		.then()
+		.catch(error => toast.warn(error.response.data));
+		console.log("asda")
+	}
+
 	render() {
 		return (
 			<div>
@@ -18,7 +45,8 @@ export default class Login extends Component<State, Props> {
 					<div className="container h-100">
 						<div className="row justify-content-center align-items-center main-height">
 							<div className="col-md-9">
-								<form className="register-form">
+								<form className="register-form"
+										onSubmit={this.login}>
 									<h1 className="center-text">ورود</h1>
 									<hr />
 									<div className="row justify-content-center">
@@ -31,6 +59,7 @@ export default class Login extends Component<State, Props> {
 												className="text-box"
 												placeholder="نام کاربری خود را وارد کنید"
 												name="username"
+												onChange={this.handleInputChange}
 												required
 											/>
 										</div>
@@ -45,6 +74,7 @@ export default class Login extends Component<State, Props> {
 												className="text-box"
 												placeholder="رمز عبور خود را وارد کنید"
 												name="password"
+												onChange={this.handleInputChange}
 												required
 											/>
 										</div>
@@ -68,10 +98,15 @@ export default class Login extends Component<State, Props> {
 					</div>
 				</main>
 				<Footer />
+				<ToastContainer />
 			</div>
 		);
 	}
 }
 
-interface State {}
+interface State {
+	username:string;
+	password:string;
+}
+
 interface Props {}
