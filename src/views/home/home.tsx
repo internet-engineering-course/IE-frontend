@@ -10,8 +10,6 @@ import "src/views/home/home.scss";
 import { Project, getAllProjects, searchProject } from "src/api/ProjectAPI";
 import { User, getAllUser, searchUser } from "src/api/UserAPI";
 import { ToastContainer, toast } from 'react-toastify';
-import { array } from 'prop-types';
-
 
 export default class home extends Component<Props, State> {
   constructor(props: Props) {

@@ -3,22 +3,64 @@ import Header from "src/views/common/Header";
 import Footer from "src/views/common/Footer";
 import "./Register.scss";
 import { toast, ToastContainer } from "react-toastify";
+import {registerUser} from 'src/api/AuthAPI';
+import { object } from "prop-types";
 export default class Register extends Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
-		this.state = { password: "", password_confirm: "" };
+		this.state = { 
+			password: "",
+			password_confirm: "",
+			username: "",
+			firstname: "",
+			lastname: "",
+			bio: "",
+			jobTitle: "",
+			profileImgUrl:""
+		}
 	}
 
 	handleInputChange = (event: any) => {
 		const target = event.target;
-		if (target.type === "password") {
-			const name = target.name;
-			const value = target.value;
-			this.setState({
-				[name]: value
-			} as any);
-		}
+		const name = target.name;
+		const value = target.value;
+		this.setState({
+			[name]: value
+		} as any);
+		console.log(name , value)
 	};
+
+	checkPassword = (event: any) =>{
+		event.preventDefault();
+		if( this.state.password.length < 8){
+			toast.warn(
+				"Password lengths should be more than 8 character!"
+			);
+			return;
+		}
+		if (this.state.password != this.state.password_confirm){
+			toast.warn(
+				"Passwords don't match!"
+			);
+			return;
+		}
+
+		var user = {
+			password: this.state.password,
+			username: this.state.username,
+			firstname: this.state.firstname,
+			lastname: this.state.lastname,
+			bio: this.state.bio,
+			jobTitle: this.state.jobTitle,
+			imageUrl: this.state.profileImgUrl
+		}
+
+		registerUser(user)
+		.then(
+			()=>{window.location.assign('/login')}
+		)
+		.catch(error => toast.warn(error.response.data));
+	}
 
 	render() {
 		return (
@@ -37,16 +79,7 @@ export default class Register extends Component<Props, State> {
 							<div className="col-md-9">
 								<form
 									className="register-form py-3 px-5"
-									onSubmit={event => {
-										event.preventDefault();
-										if (
-											this.state.password !=
-											this.state.password_confirm
-										)
-											toast.warn(
-												"Passwords don't match!"
-											);
-									}}>
+									onSubmit={this.checkPassword}>
 									<h1 className="center-text">ثبت نام</h1>
 									<hr />
 									<div className="row">
@@ -59,6 +92,7 @@ export default class Register extends Component<Props, State> {
 												className="text-box"
 												placeholder="نام خود را وارد کنید"
 												name="firstname"
+												onChange={this.handleInputChange}
 												required
 											/>
 										</div>
@@ -71,6 +105,7 @@ export default class Register extends Component<Props, State> {
 												className="text-box"
 												placeholder="نام خانوادگی وارد کنید"
 												name="lastname"
+												onChange={this.handleInputChange}
 												required
 											/>
 										</div>
@@ -85,6 +120,7 @@ export default class Register extends Component<Props, State> {
 												className="text-box right-placeholder"
 												placeholder="نام کاربری وارد کنید"
 												name="username"
+												onChange={this.handleInputChange}
 												required
 											/>
 										</div>
@@ -97,6 +133,7 @@ export default class Register extends Component<Props, State> {
 												className="text-box"
 												placeholder="توضیح کوتاه در مورد خودت"
 												name="bio"
+												onChange={this.handleInputChange}
 												required
 											/>
 										</div>
@@ -112,6 +149,7 @@ export default class Register extends Component<Props, State> {
 												className="text-box"
 												placeholder="عنوان شغل تا حد ممکن فارسی"
 												name="jobTitle"
+												onChange={this.handleInputChange}
 												required
 											/>
 										</div>
@@ -124,6 +162,7 @@ export default class Register extends Component<Props, State> {
 												className="text-box right-placeholder"
 												placeholder="لینک عکس پروفایل"
 												name="profileImgUrl"
+												onChange={this.handleInputChange}
 												required
 											/>
 										</div>
@@ -139,9 +178,7 @@ export default class Register extends Component<Props, State> {
 												className="text-box"
 												placeholder="رمز وارد کنید"
 												name="password"
-												onChange={
-													this.handleInputChange
-												}
+												onChange={this.handleInputChange}
 												required
 											/>
 										</div>
@@ -153,9 +190,7 @@ export default class Register extends Component<Props, State> {
 												type="password"
 												className="text-box"
 												placeholder="تکرار رمز وارد کنید"
-												onChange={
-													this.handleInputChange
-												}
+												onChange={this.handleInputChange}
 												name="password_confirm"
 												required
 											/>
@@ -189,5 +224,11 @@ export default class Register extends Component<Props, State> {
 interface State {
 	password: string;
 	password_confirm: string;
+	username: string;
+	firstname: string;
+	lastname: string;
+	bio: string;
+	jobTitle: string;
+	profileImgUrl:string;
 }
 interface Props {}
