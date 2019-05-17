@@ -13,7 +13,8 @@ API.interceptors.request.use((config) => {
 });
 
 API.interceptors.response.use(response => response, (error) => {
-	if (error && (error.response.status === 401  || error.response.status === 403))
+	if ((error.response.config.ulr ==='/auth/login' || error.response.config.ulr ==='/auth/register') &&
+		 (error.response.status === 401  || error.response.status === 403))
 	{
 		localStorage.clear;
 	   	window.location.href = '/login';

@@ -4,7 +4,6 @@ import Footer from "src/views/common/Footer";
 import Bar from "src/views/common/bar/Bar";
 import SkillBox, { SkillBoxType } from "src/views/common/SkillBox";
 import SelectInput from "src/views/common/input/SelectInput";
-import ProfilePhoto from "src/resources/img/profile.jpg";
 import { ToastContainer, toast } from 'react-toastify';
 import {parseJwt} from "src/utils/parseJwt";
 
@@ -31,6 +30,7 @@ export default class Profile extends Component<Props, State> {
 				firstname: "untitled",
 				lastname: "untitled",
 				jobTitle: "untitled",
+				imageUrl: "untitled",
 				bio: "untitled",
 				skills: [
 					{
@@ -156,7 +156,7 @@ export default class Profile extends Component<Props, State> {
 							<div className="col-auto">
 								<div className="profile-border">
 									<img
-										src={ProfilePhoto}
+										src={user.imageUrl}
 										alt="Profile Photo"
 										className="profile-image"
 									/>

@@ -35,6 +35,7 @@ export interface User {
 	firstname: string;
 	lastname: string;
 	jobTitle: string;
+	imageUrl: string;
 	bio: string;
 	skills: Skill[];
 }

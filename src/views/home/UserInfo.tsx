@@ -13,7 +13,7 @@ export default class UserInfo extends Component<Props, State> {
         return (
             <div className="row user" onClick={this.props.onUserClick}>
                 <div className="col-4 image-area">
-                    <img src={ProfilePhoto} alt="project image" className="user-image" />
+                    <img src={this.props.user.imageUrl} alt="project image" className="user-image" />
                 </div>
                 <div className="col-8 text-area">
                     <p className="name-color m-0">

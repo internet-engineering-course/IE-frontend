@@ -64,7 +64,7 @@ export default class project extends Component<Props, State> {
 				if (this.state.isDeadLineReceived) {
 					getProjectWinner(this.state.project.id)
 						.then(res => {
-							if(res.data == ""){
+							if(res.data == "" || res.data.id == null){
 								this.setState({winnerUser:""});
 							}else{
 								this.setState({winnerUser:res.data.firstname+" "+res.data.lastname});
