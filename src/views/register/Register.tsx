@@ -4,7 +4,8 @@ import Footer from "src/views/common/Footer";
 import "./Register.scss";
 import { toast, ToastContainer } from "react-toastify";
 import {registerUser} from 'src/api/AuthAPI';
-import { object } from "prop-types";
+import {parseJwt} from "src/utils/parseJwt";
+
 export default class Register extends Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
@@ -20,6 +21,8 @@ export default class Register extends Component<Props, State> {
 		}		
 		var token = localStorage.getItem("token");
 		if(token != null){
+			var expiration = parseJwt(token).exp;
+			if(expiration > Date.now())
 				window.location.assign('/home');
 		}
 	}

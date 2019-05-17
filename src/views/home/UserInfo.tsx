@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "src/scss/style.scss";
 import "src/views/home/UserInfo.scss";
 import { User } from "src/api/UserAPI"
-import ProfilePhoto from "src/resources/img/profile.jpg";
+
 export default class UserInfo extends Component<Props, State> {
     constructor(props: Props) {
         super(props);

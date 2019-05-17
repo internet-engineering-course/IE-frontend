@@ -14,6 +14,8 @@ export default class Login extends Component<Props, State> {
 		}
 		var token = localStorage.getItem("token");
 		if(token != null){
+			var expiration = parseJwt(token).exp;
+			if(expiration > Date.now())
 				window.location.assign('/home');
 		}
 	}

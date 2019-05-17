@@ -5,9 +5,9 @@ var API = axios.create({
 });
 
 API.interceptors.request.use((config) => {
-	if (config.url === '/auth/login' || config.url === '/auth/register'){
+	if (config.url === '/auth/login' || config.url === '/auth/register')
 		return config;
-	} 
+	
 	config.headers.Authorization = localStorage.getItem('token');
 	return config;
 });
@@ -17,12 +17,10 @@ API.interceptors.response.use(response => response, (error) => {
 		|| error.response.config.url === `${error.response.config.baseURL}/auth/register`){
 			return Promise.reject(error);
 	}
-		
 	if(error.response.status === 401 || error.response.status === 403){
 			localStorage.clear;
 			window.location.href = '/login';
 	}
-	
 	return Promise.reject(error);
 });
 
