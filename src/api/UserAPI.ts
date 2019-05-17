@@ -5,8 +5,8 @@ export const getAllUser = () =>{
 	return API.get("/user");
 };
 
-export const getUser = (userId: number) => {
-	return API.get("/user/" + userId);
+export const getUser = (username: string) => {
+	return API.get("/user/" + username);
 };
 
 export const addUserSkill = (skillName: string) => {
@@ -17,12 +17,12 @@ export const deleteUserSkill = (skillName: string) => {
 	return API.delete("/user", { data: { skills: [{ name: skillName }] } });
 };
 
-export const getEndorsableSkills = (userId: string) => {
-	return API.get('/user/' + userId + '/endorse')
+export const getEndorsableSkills = (username: string) => {
+	return API.get('/user/' + username + '/endorse')
 }
 
-export const endorseUserSkill = (skillName: string, userId: number) => {
-	return API.post("user/" + userId + "/endorse", { skillName: skillName });
+export const endorseUserSkill = (skillName: string, username: string) => {
+	return API.post("user/" + username + "/endorse", { skillName: skillName });
 };
 
 export const searchUser = (filter:string) => {

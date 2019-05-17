@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import "src/views/common/Header.scss";
 import "src/scss/style.scss";
 import logoUrl from "src/resources/img/logo_v1.png";
-import { DEFAULT_USER_ID } from "src/constants/constants";
-
+import {parseJwt} from "src/utils/parseJwt";
 export default class Header extends Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
@@ -17,6 +16,13 @@ export default class Header extends Component<Props, State> {
 		} else {
 			const result = this.guestHeader();
 			return result;
+		}
+	}
+
+	username = () => {
+		var token = localStorage.getItem('token');
+		if(token != null){
+			return parseJwt(token).iss;
 		}
 	}
 
@@ -54,7 +60,7 @@ export default class Header extends Component<Props, State> {
 							<nav className="col-auto">
 								<div className="row align-items-center">
 									<a
-										href={"/profile/" + DEFAULT_USER_ID}
+										href={"/profile/" + this.username()}
 										className="col-auto profile-link">
 										حساب کاربری
 									</a>

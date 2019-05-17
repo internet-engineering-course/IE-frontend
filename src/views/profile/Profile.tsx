@@ -6,9 +6,10 @@ import SkillBox, { SkillBoxType } from "src/views/common/SkillBox";
 import SelectInput from "src/views/common/input/SelectInput";
 import ProfilePhoto from "src/resources/img/profile.jpg";
 import { ToastContainer, toast } from 'react-toastify';
+import {parseJwt} from "src/utils/parseJwt";
 
 import "./Profile.scss";
-import { DEFAULT_USER_ID } from "src/constants/constants.ts";
+
 import { getAllSkills, Skill, EndorsableSkill } from "src/api/SkillAPI";
 import {
 	getUser,
@@ -48,7 +49,7 @@ export default class Profile extends Component<Props, State> {
 			match: { params }
 		} = this.props;
 
-		getUser(params.userId)
+		getUser(params.username)
 			.then(res => {
 				this.setState({ user: res.data });
 			})
@@ -63,7 +64,7 @@ export default class Profile extends Component<Props, State> {
 			})
 			.catch(error => toast.warn(error.response.data));
 
-		getEndorsableSkills(params.userId)
+		getEndorsableSkills(params.username)
 			.then(res => {
 				this.setState({ endorsableSkills: res.data });
 			})
@@ -79,8 +80,13 @@ export default class Profile extends Component<Props, State> {
 	};
 	
 	render() {
+		var token = localStorage.getItem('token');
+		var loginUser;
+		if(token != null){
+			loginUser = parseJwt(token).iss;
+		}
 		const { user } = this.state;
-		const loadSelfPage: boolean = DEFAULT_USER_ID == user.id;
+		const loadSelfPage: boolean = loginUser == user.username;
 		const skills = loadSelfPage
 			? user.skills.map(skill => {
 					return { skill: skill, endorsable: false };
@@ -106,7 +112,7 @@ export default class Profile extends Component<Props, State> {
 								})
 								.catch(error => console.error(error));
 						} else if (skill.type == SkillBoxType.Endorsable) {
-							endorseUserSkill(skill.name, user.id)
+							endorseUserSkill(skill.name, user.username)
 								.then(res => {
 									skill.point = skill.point + 1;
 									skill.type = SkillBoxType.Endorsed;
