@@ -17,6 +17,10 @@ export default class Register extends Component<Props, State> {
 			bio: "",
 			jobTitle: "",
 			profileImgUrl:""
+		}		
+		var token = localStorage.getItem("token");
+		if(token != null){
+				window.location.assign('/home');
 		}
 	}
 

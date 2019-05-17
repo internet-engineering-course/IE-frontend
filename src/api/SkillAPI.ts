@@ -1,6 +1,5 @@
 import API from "./API";
 import { SkillBoxType } from "src/views/common/SkillBox";
-import axios from "axios";
 
 export const getAllSkills = () => {
 	return API.get("/skill");

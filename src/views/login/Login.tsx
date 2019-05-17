@@ -3,6 +3,7 @@ import Header from "src/views/common/Header";
 import Footer from "src/views/common/Footer";
 import {login} from "src/api/AuthAPI"
 import { toast, ToastContainer } from "react-toastify";
+import {parseJwt} from "src/utils/parseJwt";
 
 export default class Login extends Component<Props, State> {
 	constructor(props: Props) {
@@ -10,6 +11,10 @@ export default class Login extends Component<Props, State> {
 		this.state = { 
 			password: "",
 			username: ""
+		}
+		var token = localStorage.getItem("token");
+		if(token != null){
+				window.location.assign('/home');
 		}
 	}
 
@@ -27,6 +32,7 @@ export default class Login extends Component<Props, State> {
 		login(this.state.username, this.state.password)
 		.then( res =>{
 			localStorage.setItem("token" , res.data.token);
+			window.location.assign('home');
 		}
 		)
 		.catch(error => toast.warn(error.response.data));

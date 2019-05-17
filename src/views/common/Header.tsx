@@ -36,6 +36,12 @@ export default class Header extends Component<Props, State> {
 		);
 	};
 
+	logout = (event:any)=>{
+		event.preventDefault();
+		localStorage.clear();
+		window.location.assign('/login');
+	}
+
 	userHeader = () => {
 		return (
 			<header>
@@ -52,7 +58,9 @@ export default class Header extends Component<Props, State> {
 										className="col-auto profile-link">
 										حساب کاربری
 									</a>
-									<a className="profile-link" href="/login"><div className="col-auto">خروج</div></a>
+									<a className="profile-link" href="/login" onClick={this.logout}>
+										<div className="col-auto">خروج</div>
+									</a>
 								</div>
 							</nav>
 						</div>

@@ -10,7 +10,6 @@ import "src/views/home/home.scss";
 import { Project, getAllProjects, searchProject } from "src/api/ProjectAPI";
 import { User, getAllUser, searchUser } from "src/api/UserAPI";
 import { ToastContainer, toast } from 'react-toastify';
-import {parseJwt} from "src/utils/parseJwt";
 
 export default class home extends Component<Props, State> {
   constructor(props: Props) {
@@ -25,16 +24,6 @@ export default class home extends Component<Props, State> {
       userSearchText: "",
       loadMoreVisibility: true,
       isSearching: false
-    }
-
-    var token = localStorage.getItem("token");
-    if(token === null){
-      window.location.assign('/login');
-    }else{
-      var expirationTime = parseJwt(token).exp;
-      // if(expirationTime - Date.now() < 0){
-      //   window.location.assign('/login');
-      // }
     }
   }
 
