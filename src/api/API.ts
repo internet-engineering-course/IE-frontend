@@ -13,12 +13,16 @@ API.interceptors.request.use((config) => {
 });
 
 API.interceptors.response.use(response => response, (error) => {
-	if ((error.response.config.ulr ==='/auth/login' || error.response.config.ulr ==='/auth/register') &&
-		 (error.response.status === 401  || error.response.status === 403))
-	{
-		localStorage.clear;
-	   	window.location.href = '/login';
+	if (error.response.config.url === `${error.response.config.baseURL}/auth/login`
+		|| error.response.config.url === `${error.response.config.baseURL}/auth/register`){
+			return Promise.reject(error);
 	}
+		
+	if(error.response.status === 401 || error.response.status === 403){
+			localStorage.clear;
+			window.location.href = '/login';
+	}
+	
 	return Promise.reject(error);
 });
 
